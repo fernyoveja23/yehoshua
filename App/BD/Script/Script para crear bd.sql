@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`evento turistico` (
   `NombreEvento` VARCHAR(45) NOT NULL,
   `FechaInicioEvento` DATETIME NOT NULL,
   `FechaFinEvento` DATETIME NULL DEFAULT NULL,
-  `CapacidadEvento` VARCHAR(45) NOT NULL,
-  `DescripciónEvento` MEDIUMTEXT NOT NULL,
-  `CostoEvento` DECIMAL(10,0) NOT NULL,
+  `CapacidadEvento` INT NOT NULL,
+  `DescripcionEvento` MEDIUMTEXT NOT NULL,
+  `CostoEvento` DECIMAL(10,2) NOT NULL,
   `Vendedor_idVendedor` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`idEvento`),
   INDEX `fk_Evento Turistico_Vendedor1_idx` (`Vendedor_idVendedor` ASC),
@@ -160,7 +160,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `yehoshua`.`lugar` (
   `idLugar` INT(11) NOT NULL,
   `Evento Turistico_idEvento` INT(11) NOT NULL,
-  `DetalleLugar` VARCHAR(45) NULL DEFAULT NULL,
+  `DetalleLugar` VARCHAR(250) NOT NULL,
   PRIMARY KEY (`idLugar`),
   INDEX `fk_Lugar_Evento Turistico1_idx` (`Evento Turistico_idEvento` ASC),
   CONSTRAINT `fk_Lugar_Evento Turistico1`
