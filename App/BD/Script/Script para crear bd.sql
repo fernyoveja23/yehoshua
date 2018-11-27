@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`evento turistico` (
   `FechaInicioEvento` DATETIME NOT NULL,
   `FechaFinEvento` DATETIME NULL DEFAULT NULL,
   `CapacidadEvento` VARCHAR(45) NOT NULL,
-  `DescripciónEvento` VARCHAR(100) NOT NULL,
+  `DescripciónEvento` MEDIUMTEXT NOT NULL,
   `CostoEvento` DECIMAL(10,0) NOT NULL,
   `Vendedor_idVendedor` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`idEvento`),
