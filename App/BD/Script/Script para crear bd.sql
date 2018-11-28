@@ -62,11 +62,11 @@ COLLATE = utf8_bin;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`vendedor` (
   `idVendedor` INT(11) NOT NULL,
-  `NombreVendedor` VARCHAR(45) NOT NULL,
-  `DireccionVendedor` VARCHAR(45) NOT NULL,
-  `EmailVendedor` VARCHAR(45) NOT NULL,
-  `TelefonoVendedor` VARCHAR(45) NOT NULL,
-  `idUsuario` INT(11) NULL DEFAULT NULL,
+  `NombreVendedor` VARCHAR(150) NOT NULL,
+  `DireccionVendedor` VARCHAR(300) NOT NULL,
+  `EmailVendedor` VARCHAR(100) NOT NULL,
+  `TelefonoVendedor` VARCHAR(25) NOT NULL,
+  `idUsuario` INT(11) NOT NULL,
   PRIMARY KEY (`idVendedor`),
   INDEX `fk_usuario_vendedor_idx` (`idUsuario` ASC),
   CONSTRAINT `fk_usuario_vendedor`
