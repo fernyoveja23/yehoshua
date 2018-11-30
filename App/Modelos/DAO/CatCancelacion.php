@@ -3,7 +3,7 @@ class CatalogoCancelacion{
     var $idCatCancelacion;
     var $descripcionCatCancelacion;
 
-    function CatalogoCancelacion{
+    function CatalogoCancelacion(){
         $idCatCancelacion = 0;
         $descripcionCatCancelacion = "";
     }
