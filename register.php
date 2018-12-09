@@ -1,8 +1,11 @@
 <html>
-    <head>
-        <title>My first PHP Website</title>
-    </head>
+<?php
+    include 'head.php';
+    ?>
     <body>
+        <?php
+            include 'menu.php';
+        ?> 
         <h2>Registration Page</h2>
         <a href="index.php">Click here to go back<br/><br/>
         <form action="register.php" method="POST">

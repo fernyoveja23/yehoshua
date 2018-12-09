@@ -1,0 +1,16 @@
+body {
+    background-image: url("/yehoshua/resources/img/fondo.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(55, 55, 55);
+    color: white;
+    text-align: center;
+}

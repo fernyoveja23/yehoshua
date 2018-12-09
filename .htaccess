@@ -1,0 +1,2 @@
+ErrorDocument 403 /yehoshua/403.php
+ErrorDocument 404 /yehoshua/404.php
