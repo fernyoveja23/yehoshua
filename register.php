@@ -1,6 +1,11 @@
 <html>
 <?php
     include 'head.php';
+    include 'App/BD/Conexion.php';
+
+    $conection = new MySQLConexion;
+
+    $conection->getConexion();
     ?>
     <body>
         <?php

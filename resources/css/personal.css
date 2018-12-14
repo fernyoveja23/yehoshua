@@ -3,6 +3,7 @@ body {
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
+    /* filter: blur(6px); */
 }
 
 .footer {
