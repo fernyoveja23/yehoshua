@@ -2,18 +2,19 @@
 include_once 'Config.php';
 class MySQLConexion
 {
-    var $conn;
-    function getConexion()
+    
+    public function getConexion()
     {
         $conn = mysqli_connect(MySQLConfig::gethost(), MySQLConfig::getusername(), MySQLConfig::getpassword(), MySQLConfig::getdatabase());
 // checar conexion
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        return $this->$conn;    
+        $conn->autocommit(FALSE);
+        return $conn;    
     }
 
-    function closeConexion()
+    public function closeConexion()
     {
         mysqli_close($conn);
     }
