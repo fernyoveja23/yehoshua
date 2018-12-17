@@ -1,36 +1,36 @@
 <?php
 class Rol{
-    var $idRol;
-    var $Rol;
-    var $DescripcionRol;
+    public $idRol;
+    public $Rol;
+    public $DescripcionRol;
 
     //Constructor
-    function Rol(){
-        $this->$idRol = 0;
-        $this->$Rol = "";
-        $this->$DescripcionRol = "";
+    function __construct(){
+        $this->idRol = 0;
+        $this->Rol = "";
+        $this->DescripcionRol = "";
     }
 
     //getters y setters
     function getidRol(){
-        return $this->$idRol;
+        return $this->idRol;
     }
     function setidRol($idR){
-        $this->$idRol = $idR;
+        $this->idRol = $idR;
     }
     //getters y setters
     function getRol(){
-        return $this->$Rol;
+        return $this->Rol;
     }
     function setRol($R){
-        $this->$Rol = $R;
+        $this->Rol = $R;
     }
     //getters y setters
     function getDescripcionRol(){
-        return $this->$DescripcionRol;
+        return $this->DescripcionRol;
     }
     function setDescripcionRol($Descripcion){
-        $this->$DescripcionRol = $Descripcion;
+        $this->DescripcionRol = $Descripcion;
     }
 }
 ?>

@@ -24,12 +24,28 @@ class UsuarioController{
         }
     }
 
+    //Guarda el usuario y su password ademas de asignarle el rol de Administrador
     public function saveAdmin($username, $password){
         $sql = "INSERT INTO `usuarios` (`Username`, `Password`) VALUES ('".$username."', '".base64_encode($password)."')";
         
         $result = $this->usuarioFacade->insert($this->conn, $sql);
         if($result!=0){
             $sql = "INSERT INTO `usuariorol` (`idUsuario`, `IdRol`) VALUES ('".$result."', 'ADM')";
+            if ($this->conn->query($sql) === TRUE) {
+                $this->conn->commit();
+            }else{
+                $this->conn->rollback();
+            }
+        }
+        return $result;
+    }
+
+    public function saveUser($username, $password, $rol){
+        $sql = "INSERT INTO `usuarios` (`Username`, `Password`) VALUES ('".$username."', '".base64_encode($password)."')";
+        
+        $result = $this->usuarioFacade->insert($this->conn, $sql);
+        if($result!=0){
+            $sql = "INSERT INTO `usuariorol` (`idUsuario`, `IdRol`) VALUES ('".$result."', '".$rol."')";
             if ($this->conn->query($sql) === TRUE) {
                 $this->conn->commit();
             }else{

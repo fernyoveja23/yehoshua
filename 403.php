@@ -11,7 +11,7 @@
     <body>
         <div>
             <p><?php echo "No es posible encontrar la pagina que buscas" ?></p>
-            <a href="http://localhost/yehoshua">Regresar a la pagina principal</a>
+            <a href="/yehoshua">Regresar a la pagina principal</a>
         </div>
     </body>
 </html>
