@@ -31,10 +31,19 @@
                     ?>
                     <li class="nav-item">
                         <a class="nav-link" href='logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
-                    </li>
+                    </li>                    
                     <?php
                     }
                     ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo idioma::MENU_IDIOMA; ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="?lang=es-MX"><?php echo idioma::MENU_IDIOMA_ES_MX; ?></a>
+                            <a class="dropdown-item" href="?lang=en-US"><?php echo idioma::MENU_IDIOMA_EN; ?></a>
+                        </div>
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="<?php echo idioma::MENU_BUSCAR_PLACE; ?>" aria-label="Search">

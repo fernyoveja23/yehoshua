@@ -7,6 +7,9 @@ class idioma{
     public const MENU_VENDEDORES = "Vendedores";
     public const MENU_VENDEDORES_SIGIN = "Registrate";
     public const MENU_VENDEDORES_LOGIN = "Inicia sesion";
+    public const MENU_IDIOMA = "Idiomas";
+    public const MENU_IDIOMA_EN = "Inglés";
+    public const MENU_IDIOMA_ES_MX = "Español";
     public const MENU_LOGOUT = "Cerrar sesion";
     public const MENU_BUSCAR = "Buscar";
     public const MENU_BUSCAR_PLACE = "Busca tu viaje";
