@@ -51,7 +51,8 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`usuarios` (
   `idusuarios` INT(11) NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(16) NOT NULL,
-  PRIMARY KEY (`idusuarios`))
+  PRIMARY KEY (`idusuarios`),
+  UNIQUE INDEX `Username_UNIQUE` (`Username` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
@@ -86,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`evento turistico` (
   `NombreEvento` VARCHAR(45) NOT NULL,
   `FechaInicioEvento` DATETIME NOT NULL,
   `FechaFinEvento` DATETIME NULL DEFAULT NULL,
-  `CapacidadEvento` INT NOT NULL,
+  `CapacidadEvento` INT(11) NOT NULL,
   `DescripcionEvento` MEDIUMTEXT NOT NULL,
   `CostoEvento` DECIMAL(10,2) NOT NULL,
   `Vendedor_idVendedor` INT(11) NULL DEFAULT NULL,
