@@ -1,6 +1,7 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"].'/yehoshua/App/Facades/UsuarioFacade.php';
+require_once $_SERVER["DOCUMENT_ROOT"].'/yehoshua/App/Modelos/DAO/Usuarios.php';
 class UsuarioController{
     public $conn;
     public $usuarioFacade;
@@ -53,6 +54,25 @@ class UsuarioController{
             }
         }
         return $result;
+    }
+
+    public function getUserByUsername($usuario){
+        $sql = "SELECT * FROM usuarios WHERE Username = '".$usuario."'";
+        $result = $this->usuarioFacade->select($this->conn, $sql);
+        if($result->num_rows == 1){
+            $row = $result->fetch_assoc();
+            $usuario = new UsuarioDAO();
+            $usuario->setidUsuario($row["idusuarios"]);
+            $usuario->setUsername($row["Username"]);
+            $usuario->setPassword($row["Password"]);
+            return $usuario;
+        }else{
+            $usuario = new UsuarioDAO();
+            $usuario->setidUsuario(0);
+            $usuario->setUsername("");
+            $usuario->setPassword("");
+            return $usuario;
+        }
     }
 }
 ?>

@@ -25,5 +25,8 @@ class idioma{
     public const REGISTRO_TITLE = "¡Registrate para publicar tus viajes!";
     public const REGISTRO_EXITO = "¡Felicidades, te has registrado con exito!";
     public const REGISTRO_FALLO = "¡Hubo un error al registrarte!";
+    public const INICIO_SESION_TITLE = "Inicio de sesion";
+    public const INICIO_SESION_USER = "Nombre de usuario:";
+    public const INICIO_SESION_PASS = "Contraseña:";
 }
 ?>

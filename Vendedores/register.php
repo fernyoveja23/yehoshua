@@ -13,6 +13,18 @@
         <div class="hero-image mt-5">
             <div class="hero-text background-info">
             <?php
+            $conection = new MySQLConexion;
+            $conn = $conection->getConexion();
+            $usuarioController = new UsuarioController($conn);
+            $result = $usuarioController->getAdmin();
+            if($result == 0){
+               ?>
+                 <h2><?php echo idioma::REGISTRO_NO_ADMIN; ?></h2>
+                 <br/>
+                 <br/>
+                 <a href="/yehoshua/App/adminregister.php" class="btn btn-primary btn-lg" role="button" aria-pressed="true"><?php echo idioma::REGISTRO_BTN_ADMIN; ?></a>
+               <?php
+            }else{
                 if(isset($_POST["username"]) && isset($_POST["password"])){
                     $conection = new MySQLConexion;
 
@@ -32,37 +44,23 @@
                 ?>
                     <h2><?php echo idioma::REGISTRO_TITLE; ?></h2>                    
                     <form action="#" method="POST">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col col-sm-4">
-                                <label for="inputusername">
-                                    <?php echo idioma::REGISTRO_ADMIN_INUSER; ?>
-                                </label>
-                                </div>
-                                <div class="col col-sm-7">
-                                    <input id="inputusername" class="form-control" type="text" name="username" required="required" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col col-sm-4">
-                                <label for="inputpassword">
-                                    <?php echo idioma::REGISTRO_ADMIN_INPASS; ?>
-                                </label>
-                                </div>
-                                <div class="col col-sm-7">
-                                    <input id ="inputpassword" class="form-control" type="password" name="password" required="required" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col col-sm-10">
-                                
-                                    <input class="btn btn-primary" type="submit" value="<?php echo idioma::REGISTRO_BTN_ADMIN; ?>"/>
-                                </div>
-                            </div>
-                        </div>                        
+                        <div class="form-group">
+                            <label for="inputusername">
+                                <?php echo idioma::REGISTRO_ADMIN_INUSER; ?>
+                            </label>
+                            <input id="inputusername" class="form-control is-valid" type="text" name="username" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputpassword">
+                                <?php echo idioma::REGISTRO_ADMIN_INPASS; ?>
+                            </label>
+                            <input id ="inputpassword" class="form-control  is-valid" type="password" name="password" required="required" />
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="<?php echo idioma::REGISTRO_BTN_ADMIN; ?>"/>                        
                     </form>       
                 <?php
                 }
+            }
                 ?>       
             </div>
         </div>

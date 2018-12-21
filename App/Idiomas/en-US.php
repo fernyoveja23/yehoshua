@@ -25,5 +25,8 @@ class idioma{
     public const REGISTRO_TITLE = "Register to publish your trips!";
     public const REGISTRO_EXITO = "Congratulations, you have successfully registered!";
     public const REGISTRO_FALLO = "There was an error when registering!";
+    public const INICIO_SESION_TITLE = "Log in";
+    public const INICIO_SESION_USER = "Username:";
+    public const INICIO_SESION_PASS = "Password:";
 }
 ?>

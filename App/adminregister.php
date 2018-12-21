@@ -29,29 +29,19 @@
                 ?>
                     <h2><?php echo idioma::REGISTRO_ADMIN_TITLE; ?></h2>                    
                     <form action="#" method="POST">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <?php echo idioma::REGISTRO_ADMIN_INUSER; ?>
-                                </div>
-                                <div class="col-sm-7">
-                                    <input type="text" name="username" required="required" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <?php echo idioma::REGISTRO_ADMIN_INPASS; ?>
-                                </div>
-                                <div class="col-sm-7">
-                                <input type="password" name="password" required="required" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <input class="btn btn-primary" type="submit" value="<?php echo idioma::REGISTRO_BTN_ADMIN; ?>"/>
-                                </div>
-                            </div>
-                        </div>                        
+                        <div class="form-group">
+                            <label for="inputusername">
+                                <?php echo idioma::REGISTRO_ADMIN_INUSER; ?>
+                            </label>
+                            <input id="inputusername" class="form-control is-valid" type="text" name="username" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputpassword">
+                                <?php echo idioma::REGISTRO_ADMIN_INPASS; ?>
+                            </label>
+                            <input id ="inputpassword" class="form-control  is-valid" type="password" name="password" required="required" />
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="<?php echo idioma::REGISTRO_BTN_ADMIN; ?>"/>                      
                     </form>       
                 <?php
                 }
