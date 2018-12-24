@@ -23,6 +23,16 @@ body {
   background-size: cover;
   position: relative;
 }
+
+.hero-image-fail-login{
+  background-image: url("/yehoshua/resources/img/errorLogin.jpgs");
+  background-color: #cccccc;
+  height: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
   
 .hero-text {
   text-align: center;

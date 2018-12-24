@@ -10,23 +10,26 @@
             include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/menu.php';
             if(isset($_POST["username"]) && isset($_POST["password"])){
                 ?>
-                <div class="hero-image mt-5">
-            <div class="hero-text background-info">
+                <div class="hero-image-fail-login mt-5">
+                <div class="hero-text background-info">
                 <?php
                 $conection = new MySQLConexion;
 
                 $conn = $conection->getConexion();
                 $usuarioController = new UsuarioController($conn);
                 
+                //traemos el resultado de conseguir el usuario
                 $result = $usuarioController->getUserByUsername($_POST["username"]);
                 
                 if($result->getidUsuario() != 0){
                     $password = base64_encode($_POST["password"]);
                     if($password === $result->getPassword()){
+                        //inicio de sesion correcto
                         echo "hola ".$result->getUsername();
                     }
                 }else{
-                    echo "fuuck";
+                    //inicio de sesion incorrecto
+                    
                 }
                 $conn->close();
                 ?>
