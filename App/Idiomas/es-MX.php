@@ -28,5 +28,7 @@ class idioma{
     public const INICIO_SESION_TITLE = "Inicio de sesion";
     public const INICIO_SESION_USER = "Nombre de usuario:";
     public const INICIO_SESION_PASS = "Contraseña:";
+    public const INICIO_SESION_FAIL = "Hubo un problema al iniciar sesion";
+    public const INICIO_SESION_BTN = "Iniciar sesion";
 }
 ?>

@@ -10,7 +10,7 @@
         <?php
             include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/menu.php';
         ?> 
-        <div class="hero-image mt-5">
+        <div class="hero-image-users mt-5">
             <div class="hero-text background-info">
             <?php
             $conection = new MySQLConexion;

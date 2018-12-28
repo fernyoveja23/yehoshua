@@ -10,7 +10,7 @@
             include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/menu.php';
             if(isset($_POST["username"]) && isset($_POST["password"])){
                 ?>
-                <div class="hero-image-fail-login mt-5">
+                <div class="hero-image-users mt-5">
                 <div class="hero-text background-info">
                 <?php
                 $conection = new MySQLConexion;
@@ -25,11 +25,14 @@
                     $password = base64_encode($_POST["password"]);
                     if($password === $result->getPassword()){
                         //inicio de sesion correcto
-                        echo "hola ".$result->getUsername();
+                        $rol = 
                     }
                 }else{
                     //inicio de sesion incorrecto
-                    
+                    ?>
+                    <p><span class="icon-error fail-icons"></span>
+                    <?php
+                    echo idioma::INICIO_SESION_FAIL."</p>";
                 }
                 $conn->close();
                 ?>
@@ -39,7 +42,7 @@
             }
             else{
         ?> 
-        <div class="hero-image mt-5">
+        <div class="hero-image-users mt-5">
             <div class="hero-text background-info">
                 <h2><?php echo idioma::INICIO_SESION_TITLE; ?></h2>
                 <form action="#" method="POST">
@@ -55,7 +58,7 @@
                         </label>
                         <input id ="inputpassword" class="form-control  is-valid" type="password" name="password" required="required" />
                     </div>
-                    <input class="btn btn-primary" type="submit" value="<?php echo idioma::REGISTRO_BTN_ADMIN; ?>"/>                        
+                    <input class="btn btn-primary" type="submit" value="<?php echo idioma::INICIO_SESION_BTN; ?>"/>                        
                 </form>
             </div>
         </div>

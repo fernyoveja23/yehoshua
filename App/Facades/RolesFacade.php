@@ -20,5 +20,11 @@ class RolesFacade{
         $result = $conn->query($sql);
         return $result;
     }
+
+    public function getIdRolByIdUser($conn, $idUser){
+        $sql = "SELECT IdRol FROM usuariorol WHERE idUsuario ='".$idUser."'";
+        $result = $conn->query($sql);
+        return $result;
+    }
 }
 ?>

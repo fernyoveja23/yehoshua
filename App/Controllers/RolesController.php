@@ -26,6 +26,9 @@ class RolesController{
 
     }
 
+    public function getIdRolByIdUsusario($usuario){
+        
+    }
 
 }
 

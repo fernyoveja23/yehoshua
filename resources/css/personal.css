@@ -24,8 +24,8 @@ body {
   position: relative;
 }
 
-.hero-image-fail-login{
-  background-image: url("/yehoshua/resources/img/errorLogin.jpgs");
+.hero-image-users{
+  background-image: url("/yehoshua/resources/img/errorLogin.jpg");
   background-color: #cccccc;
   height: 90%;
   background-position: center;
@@ -70,6 +70,11 @@ body {
     background-color: #343A40;
     color: white;
     text-align: center;
+}
+
+.fail-icons{
+  color: darkred;
+  font-size: 1.5rem;
 }
 
 @media screen and (max-width: 320px) {
