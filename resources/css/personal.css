@@ -24,8 +24,28 @@ body {
   position: relative;
 }
 
+.hero-image-vendedor{
+  background-image: url("/yehoshua/resources/img/vendedores.jpg");
+  background-color: #cccccc;
+  height: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 .hero-image-users {
   background-image: url("/yehoshua/resources/img/errorLogin.jpg");
+  background-color: #cccccc;
+  height: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-image-logout {
+  background-image: url("/yehoshua/resources/img/logout.jpg");
   background-color: #cccccc;
   height: 90%;
   background-position: center;
@@ -78,7 +98,9 @@ body {
 }
 
 @media screen and (max-width: 320px) {
-  .hero-image {
+  .hero-image, 
+  .hero-image-logout,
+  .hero-image-users {
     width: 320px;
   }
 }
@@ -88,7 +110,9 @@ body {
     margin-top: 5rem !important;
   }
 
-  .hero-image {
+  .hero-image,
+  .hero-image-logout,
+  .hero-image-users {
     width: 480px;
   }
 }

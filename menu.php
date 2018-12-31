@@ -12,14 +12,14 @@
                         <a class="nav-link" href="#"><?php echo idioma::MENU_EVENTOS; ?></a>
                     </li>
                 <?php
-                if (!isset($_SESSION["usuario"])) {
+                if (!isset($_SESSION["usuario"]) && !isset($_SESSION["rol"])) {
 
-                ?>
+                    ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarSesiones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo idioma::MENU_VENDEDORES; ?>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="navbarSesiones">
                             <a class="dropdown-item" href="/yehoshua/Vendedores/register.php"><?php echo idioma::MENU_VENDEDORES_SIGIN; ?></a>
                             <a class="dropdown-item" href="/yehoshua/login.php"><?php echo idioma::MENU_VENDEDORES_LOGIN; ?></a>
                         </div>
@@ -27,29 +27,44 @@
                     <?php
 
                 } else {
-                        /**
-                         * Solo los vendedores tienen que registrar sus datos para que sean aprobados
-                         * por ello se tienen que llenar los datos si o si.
-                         */
+                    /**
+                     * Solo los vendedores tienen que registrar sus datos para que sean aprobados
+                     * por ello se tienen que llenar los datos si o si.
+                     */
                     if (!isset($_SESSION["nombreUsuario"]) && $_SESSION["rol"] != "Admin") {
-
-                    }
-                    ?>
+                        ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo idioma::MENU_VENDEDORES; ?>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarNoData" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo idioma::MENU_VENDEDORES_REVISION; ?>
                         </a>
-                        <a class="nav-link" href='logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarNoData">
+                            <a class="dropdown-item" href='/yehoshua/Vendedores/datos.php'><?php echo idioma::MENU_REGISTRAR_VENDEDOR; ?></a>
+                            <a class="dropdown-item" href='/yehoshua/logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
+                        </div>
+                    </li>
+                        <?php
+
+                    } else {
+                        ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarVendedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo $_SESSION["nombreUsuarios"]; ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarVendedor">
+                            <a class="dropdown-item" href='/yehoshua/logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
+                        </div>
                     </li>                    
                     <?php
 
                 }
-                ?>
+
+            }
+            ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarIdiomas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo idioma::MENU_IDIOMA; ?>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="navbarIdiomas">
                             <a class="dropdown-item" href="?lang=es-MX"><?php echo idioma::MENU_IDIOMA_ES_MX; ?></a>
                             <a class="dropdown-item" href="?lang=en-US"><?php echo idioma::MENU_IDIOMA_EN; ?></a>
                         </div>

@@ -2,18 +2,21 @@
 class idioma
 {
     public const TITLE = "Viajes Yehoshúa";
+    public const SUBTITLE = "¡Más que un Viaje una Aventura!";
     public const MENU_ALT_IMG = "Viajes Yehoshúa";
     public const MENU_INICIO = "Inicio";
     public const MENU_EVENTOS = "Viajes";
     public const MENU_VENDEDORES = "Vendedores";
     public const MENU_VENDEDORES_SIGIN = "Registrate";
     public const MENU_VENDEDORES_LOGIN = "Inicia sesion";
+    public const MENU_VENDEDORES_REVISION = "¡Importante!";
     public const MENU_IDIOMA = "Idiomas";
     public const MENU_IDIOMA_EN = "Inglés";
     public const MENU_IDIOMA_ES_MX = "Español";
     public const MENU_LOGOUT = "Cerrar sesion";
     public const MENU_BUSCAR = "Buscar";
     public const MENU_BUSCAR_PLACE = "Busca tu viaje";
+    public const MENU_REGISTRAR_VENDEDOR = "Completra tu registro";
     public const FOOT_DERECHOS = "© 2018 Copyright:";
     public const FOOT_EMPRESA = "Viajes Yehoshúa";
     public const REGISTRO_NO_ADMIN = "¡No se tiene registro de un administrador!";
@@ -32,5 +35,7 @@ class idioma
     public const INICIO_SESION_FAIL = "Hubo un problema al iniciar sesion";
     public const INICIO_SESION_BTN = "Iniciar sesion";
     public const INICIO_SESION_FAIL_ROL = "No tienes un rol asignado, consulta con tu administrador";
+    public const CIERRE_SESION = "¡Gracias por visitarnos, esperamos verte pronto!";
+    public const CIERRE_SESION_FAIL = "¡No fue posible cerrar tu sesion, intentalo de nuevo mas tarde!";
 }
 ?>
