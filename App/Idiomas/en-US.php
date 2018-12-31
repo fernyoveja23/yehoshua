@@ -30,5 +30,6 @@ class idioma{
     public const INICIO_SESION_PASS = "Password:";
     public const INICIO_SESION_FAIL = "Oops!, we have a problem to start your sesion";
     public const INICIO_SESION_BTN = "Log in";
+    public const INICIO_SESION_FAIL_ROL = "You do not have an assigned role, check with your administrator";
 }
 ?>

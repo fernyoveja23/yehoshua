@@ -1,15 +1,16 @@
 <html>
 <?php
-    include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/lang.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/head.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/App/BD/Conexion.php';
-    include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/App/Controllers/UsuariosController.php';
-    ?>
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/lang.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/UsuariosController.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/RolesController.php';
+?>
     <body>
         <?php
-            include $_SERVER["DOCUMENT_ROOT"].'/yehoshua/menu.php';
-            if(isset($_POST["username"]) && isset($_POST["password"])){
-                ?>
+        include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
+        if (isset($_POST["username"]) && isset($_POST["password"])) {
+            ?>
                 <div class="hero-image-users mt-5">
                 <div class="hero-text background-info">
                 <?php
@@ -17,31 +18,42 @@
 
                 $conn = $conection->getConexion();
                 $usuarioController = new UsuarioController($conn);
+                $rolesController = new RolesController($conn);
                 
                 //traemos el resultado de conseguir el usuario
-                $result = $usuarioController->getUserByUsername($_POST["username"]);
-                
-                if($result->getidUsuario() != 0){
+                $usuario = $usuarioController->getUserByUsername($_POST["username"]);
+
+                if ($usuario->getidUsuario() != 0) {
                     $password = base64_encode($_POST["password"]);
-                    if($password === $result->getPassword()){
+                    if ($password === $usuario->getPassword()) {
                         //inicio de sesion correcto
-                        $rol = 
+                        $rol = $rolesController->getRolByIdUsusario($usuario->getidUsuario());
+                        if ($rol != "") {
+                            $_SESSION["usuario"]=$usuario->getUsername();
+                            $_SESSION["rol"]=$rol;
+                            header("Location:index.php");
+                        } else {
+                            ?>
+                            <p><span class="icon-error fail-icons"></span>
+                            <?php
+                            echo idioma::INICIO_SESION_FAIL_ROL . "</p>";
+                        }
                     }
-                }else{
+                } else {
                     //inicio de sesion incorrecto
                     ?>
                     <p><span class="icon-error fail-icons"></span>
                     <?php
-                    echo idioma::INICIO_SESION_FAIL."</p>";
+                    echo idioma::INICIO_SESION_FAIL . "</p>";
                 }
                 $conn->close();
                 ?>
                 </div>
                 </div>
                 <?php
-            }
-            else{
-        ?> 
+
+            } else {
+                ?> 
         <div class="hero-image-users mt-5">
             <div class="hero-text background-info">
                 <h2><?php echo idioma::INICIO_SESION_TITLE; ?></h2>
@@ -63,9 +75,10 @@
             </div>
         </div>
         <?php
-            }
-        include 'foot.php';
-        ?>
+
+    }
+    include 'foot.php';
+    ?>
     </body>
    
 </html>

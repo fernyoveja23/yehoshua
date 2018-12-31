@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
 -- Schema mydb
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`catcancelacion` (
   `idCatCancelacion` CHAR(3) NOT NULL,
   `DescripcionCatCancelacion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCatCancelacion`),
-  UNIQUE INDEX `idCatCancelacion_UNIQUE` (`idCatCancelacion` ASC))
+  UNIQUE INDEX `idCatCancelacion_UNIQUE` (`idCatCancelacion` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`usuarios` (
   `Username` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(16) NOT NULL,
   PRIMARY KEY (`idusuarios`),
-  UNIQUE INDEX `Username_UNIQUE` (`Username` ASC))
+  UNIQUE INDEX `Username_UNIQUE` (`Username` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`vendedor` (
   `TelefonoVendedor` VARCHAR(25) NOT NULL,
   `idUsuario` INT(11) NOT NULL,
   PRIMARY KEY (`idVendedor`),
-  INDEX `fk_usuario_vendedor_idx` (`idUsuario` ASC),
+  INDEX `fk_usuario_vendedor_idx` (`idUsuario` ASC) VISIBLE,
   CONSTRAINT `fk_usuario_vendedor`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `yehoshua`.`usuarios` (`idusuarios`)
@@ -87,12 +87,12 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`evento turistico` (
   `NombreEvento` VARCHAR(45) NOT NULL,
   `FechaInicioEvento` DATETIME NOT NULL,
   `FechaFinEvento` DATETIME NULL DEFAULT NULL,
-  `CapacidadEvento` INT(11) NOT NULL,
+  `CapacidadEvento` INT NOT NULL,
   `DescripcionEvento` MEDIUMTEXT NOT NULL,
   `CostoEvento` DECIMAL(10,2) NOT NULL,
   `Vendedor_idVendedor` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`idEvento`),
-  INDEX `fk_Evento Turistico_Vendedor1_idx` (`Vendedor_idVendedor` ASC),
+  INDEX `fk_Evento Turistico_Vendedor1_idx` (`Vendedor_idVendedor` ASC) VISIBLE,
   CONSTRAINT `fk_Evento Turistico_Vendedor1`
     FOREIGN KEY (`Vendedor_idVendedor`)
     REFERENCES `yehoshua`.`vendedor` (`idVendedor`)
@@ -112,9 +112,10 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
   `Total` DECIMAL(2,0) NULL DEFAULT NULL,
   `idEvento` INT(11) NOT NULL,
   `idCliente` INT(11) NOT NULL,
+  `idVendedor` INT(11) NULL,
   PRIMARY KEY (`idVenta`),
-  INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC),
-  INDEX `idCliente_idx` (`idCliente` ASC),
+  INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC) VISIBLE,
+  INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
   CONSTRAINT `idCliente`
     FOREIGN KEY (`idCliente`)
     REFERENCES `yehoshua`.`cliente` (`idCliente`)
@@ -139,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`cancelaciones` (
   `idVenta` INT(11) NOT NULL,
   `CatCancelacion_idCatCancelacion` CHAR(3) NOT NULL,
   PRIMARY KEY (`idCancelaciones`),
-  INDEX `fk_Cancelaciones_Venta1_idx` (`idVenta` ASC),
-  INDEX `fk_Cancelaciones_CatCancelacion1_idx` (`CatCancelacion_idCatCancelacion` ASC),
+  INDEX `fk_Cancelaciones_Venta1_idx` (`idVenta` ASC) VISIBLE,
+  INDEX `fk_Cancelaciones_CatCancelacion1_idx` (`CatCancelacion_idCatCancelacion` ASC) VISIBLE,
   CONSTRAINT `fk_Cancelaciones_CatCancelacion1`
     FOREIGN KEY (`CatCancelacion_idCatCancelacion`)
     REFERENCES `yehoshua`.`catcancelacion` (`idCatCancelacion`)
@@ -163,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`lugar` (
   `Evento Turistico_idEvento` INT(11) NOT NULL,
   `DetalleLugar` VARCHAR(250) NOT NULL,
   PRIMARY KEY (`idLugar`),
-  INDEX `fk_Lugar_Evento Turistico1_idx` (`Evento Turistico_idEvento` ASC),
+  INDEX `fk_Lugar_Evento Turistico1_idx` (`Evento Turistico_idEvento` ASC) VISIBLE,
   CONSTRAINT `fk_Lugar_Evento Turistico1`
     FOREIGN KEY (`Evento Turistico_idEvento`)
     REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
@@ -191,8 +192,8 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `yehoshua`.`usuariorol` (
   `idUsuario` INT(11) NOT NULL,
   `IdRol` CHAR(3) NOT NULL,
-  INDEX `fk_usuarios_idx` (`idUsuario` ASC),
-  INDEX `fk_rol_idx` (`IdRol` ASC),
+  INDEX `fk_usuarios_idx` (`idUsuario` ASC) VISIBLE,
+  INDEX `fk_rol_idx` (`IdRol` ASC) VISIBLE,
   CONSTRAINT `fk_rol`
     FOREIGN KEY (`IdRol`)
     REFERENCES `yehoshua`.`roles` (`idroles`)

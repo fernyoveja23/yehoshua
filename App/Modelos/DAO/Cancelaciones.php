@@ -2,13 +2,13 @@
 include 'Venta.php';
 include 'CatCancelacion.php';
 class Cancelaciones{
-    var $idCancelacion;
-    var $fechaCancelacion;
-    var $comisionCanelacion;
-    var $venta;
-    var $catCancelacion;
+    public $idCancelacion;
+    public $fechaCancelacion;
+    public $comisionCanelacion;
+    public $venta;
+    public $catCancelacion;
 
-    function Cancelaciones(){
+    function __construct(){
         $idCancelacion = 0;
         $fechaCancelacion = new DateTime(null);
         $comisionCanelacion = 0;

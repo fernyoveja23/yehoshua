@@ -1,5 +1,6 @@
 <?php
-class idioma{
+class idioma
+{
     public const TITLE = "Viajes Yehoshúa";
     public const MENU_ALT_IMG = "Viajes Yehoshúa";
     public const MENU_INICIO = "Inicio";
@@ -16,7 +17,7 @@ class idioma{
     public const FOOT_DERECHOS = "© 2018 Copyright:";
     public const FOOT_EMPRESA = "Viajes Yehoshúa";
     public const REGISTRO_NO_ADMIN = "¡No se tiene registro de un administrador!";
-    public const REGISTRO_BTN_ADMIN = "Registrate"; 
+    public const REGISTRO_BTN_ADMIN = "Registrate";
     public const REGISTRO_ADMIN_TITLE = "Página de registro de administrador";
     public const REGISTRO_ADMIN_INUSER = "Nombre de usuario:";
     public const REGISTRO_ADMIN_INPASS = "Contraseña:";
@@ -30,5 +31,6 @@ class idioma{
     public const INICIO_SESION_PASS = "Contraseña:";
     public const INICIO_SESION_FAIL = "Hubo un problema al iniciar sesion";
     public const INICIO_SESION_BTN = "Iniciar sesion";
+    public const INICIO_SESION_FAIL_ROL = "No tienes un rol asignado, consulta con tu administrador";
 }
 ?>

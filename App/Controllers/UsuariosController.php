@@ -41,6 +41,7 @@ class UsuarioController{
         return $result;
     }
 
+    //guarda el usuario y su password encriptado en 
     public function saveUser($username, $password, $rol){
         $sql = "INSERT INTO `usuarios` (`Username`, `Password`) VALUES ('".$username."', '".base64_encode($password)."')";
         
@@ -56,6 +57,11 @@ class UsuarioController{
         return $result;
     }
 
+
+    /**
+     * Devuelve un modelo de usuario buscado por medio de su nombre de usuario
+     * 
+     */
     public function getUserByUsername($usuario){
         $sql = "SELECT * FROM usuarios WHERE Username = '".$usuario."'";
         $result = $this->usuarioFacade->select($this->conn, $sql);

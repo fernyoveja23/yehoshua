@@ -1,9 +1,9 @@
 <?php
 class CatalogoCancelacion{
-    var $idCatCancelacion;
-    var $descripcionCatCancelacion;
+    public $idCatCancelacion;
+    public $descripcionCatCancelacion;
 
-    function CatalogoCancelacion(){
+    function __construct(){
         $idCatCancelacion = 0;
         $descripcionCatCancelacion = "";
     }

@@ -1,9 +1,9 @@
 <?php
 class UsuarioRol{
-    var $idUsuario;
-    var $idRol;
+    public $idUsuario;
+    public $idRol;
     //Constructor
-    function UsuarioRol(){
+    function __construct(){
         $this->$idUsuario = "";
         $this->$idRol = "";
     }

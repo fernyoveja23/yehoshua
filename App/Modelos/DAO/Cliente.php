@@ -1,13 +1,13 @@
 <?php
 class Cliente{
-    var $idCliente;
-    var $nombreCliente;
-    var $apellidoPCliente;
-    var $apellidoMCliente;
-    var $emailCliente;
-    var $celularCliente;
+    public $idCliente;
+    public $nombreCliente;
+    public $apellidoPCliente;
+    public $apellidoMCliente;
+    public $emailCliente;
+    public $celularCliente;
 
-    function Cliente(){
+    function __construct(){
         $idCliente = 0;
         $nombreCliente = "";
         $apellidoPCliente = "";

@@ -2,14 +2,14 @@
 include 'Evento.php';
 include 'Cliente.php';
 class Venta{
-    var $idVenta;
-    var $fechaVenta;
-    var $noViajerosVenta;
-    var $Total;
-    var $Evento;
-    var $Cliente;
+    public $idVenta;
+    public $fechaVenta;
+    public $noViajerosVenta;
+    public $Total;
+    public $Evento;
+    public $Cliente;
 
-    function Venta(){
+    function __construct(){
         $idVenta = 0;
         $fechaVenta = new DateTime(null);
         $noViajerosVenta = 0;

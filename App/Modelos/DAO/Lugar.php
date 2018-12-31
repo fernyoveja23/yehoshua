@@ -1,12 +1,12 @@
 <?php
 require_once'EventoTuristico.php';
 class Lugar{
-    var $id_Lugar;
-    var $EventoTuristico;
-    var $Detalle_Lugar;
+    public $id_Lugar;
+    public $EventoTuristico;
+    public $Detalle_Lugar;
 
     //Constructor del lugar
-    function Lugar(){
+    function __construct(){
         $id_Lugar = 0;
         $EventoTuristico = new EventoTuristico;
         $Detalle_Lugar = "";

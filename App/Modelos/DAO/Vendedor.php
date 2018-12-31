@@ -2,15 +2,15 @@
 include 'EventoTuristico.php';
 include 'Usuarios.php';
 class Vendedor{
-    var $IdVendedor;
-    var $NombreVendedor;
-    var $DireccionVendedor;
-    var $EmailVendedor;
-    var $TelefonoVendedor;
-    var $Usuario;
+    public $IdVendedor;
+    public $NombreVendedor;
+    public $DireccionVendedor;
+    public $EmailVendedor;
+    public $TelefonoVendedor;
+    public $Usuario;
 
     //Constructor
-    function Vendedor(){
+    function __construct(){
         $this->$IdVendedor=0;
         $this->$NombreVendedor="";
         $this->$DireccionVendedor="";

@@ -1,17 +1,17 @@
 <?php
 class EventoTuristico
 {
-    var $idEvento;
-    var $NombreEvento;
-    var $FechaIniEvento;
-    var $FechaFinEvento;
-    var $CapacidadEvento;
-    var $DescripcionEvento;
-    var $CostoEvento;
+    public $idEvento;
+    public $NombreEvento;
+    public $FechaIniEvento;
+    public $FechaFinEvento;
+    public $CapacidadEvento;
+    public $DescripcionEvento;
+    public $CostoEvento;
 
 
     //Constructor Evento
-    function EventoTuristico()
+    function __construct()
     {
         $idEvento = 0;
         $NombreEvento = "";

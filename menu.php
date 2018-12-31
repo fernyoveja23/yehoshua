@@ -11,10 +11,10 @@
                     <li class="navbar-item">
                         <a class="nav-link" href="#"><?php echo idioma::MENU_EVENTOS; ?></a>
                     </li>
-                    <?php
-                    if( !isset($_SESSION["usuario"]) ){
+                <?php
+                if (!isset($_SESSION["usuario"])) {
 
-                    ?>
+                ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo idioma::MENU_VENDEDORES; ?>
@@ -25,16 +25,26 @@
                         </div>
                     </li>
                     <?php
-                    }
-                    else {
 
+                } else {
+                        /**
+                         * Solo los vendedores tienen que registrar sus datos para que sean aprobados
+                         * por ello se tienen que llenar los datos si o si.
+                         */
+                    if (!isset($_SESSION["nombreUsuario"]) && $_SESSION["rol"] != "Admin") {
+
+                    }
                     ?>
-                    <li class="nav-item">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo idioma::MENU_VENDEDORES; ?>
+                        </a>
                         <a class="nav-link" href='logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
                     </li>                    
                     <?php
-                    }
-                    ?>
+
+                }
+                ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo idioma::MENU_IDIOMA; ?>
