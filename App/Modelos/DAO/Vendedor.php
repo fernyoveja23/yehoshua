@@ -1,70 +1,68 @@
 <?php
-include 'EventoTuristico.php';
-include 'Usuarios.php';
 class Vendedor{
     public $IdVendedor;
     public $NombreVendedor;
     public $DireccionVendedor;
     public $EmailVendedor;
     public $TelefonoVendedor;
-    public $Usuario;
+    public $idUsuario;
 
     //Constructor
     function __construct(){
-        $this->$IdVendedor=0;
-        $this->$NombreVendedor="";
-        $this->$DireccionVendedor="";
-        $this->$EmailVendedor="";
-        $this->$TelefonoVendedor="";
-        $this->$Usuario = new Usuario;
+        $this->IdVendedor=0;
+        $this->NombreVendedor="";
+        $this->DireccionVendedor="";
+        $this->EmailVendedor="";
+        $this->TelefonoVendedor="";
+        $this->Usuario = 0;
     }
 
     //getters y setters
     function getIdVendedor(){
-        return $this->$IdVendedor;
+        return $this->IdVendedor;
     }
     function setIdVendedor($IdV){
-        $this->$IdVendedor = $IdV;
+        $this->IdVendedor = $IdV;
     }
 
     //getters y setters
     function getNombreVendedor(){
-        return $this->$NombreVendedor;
+        return $this->NombreVendedor;
     }
     function setNombreVendedor($Nombre){
-        $this->$NombreVendedor = $Nombre;
+        $this->NombreVendedor = $Nombre;
     }
 
     //getters y setters
     function getDireccionVendedor(){
-        return $this->$DireccionVendedor;
+        return $this->DireccionVendedor;
     }
     function setDireccionVendedor($Direccion){
-        $this->$DireccionVendedor = $Direccion;
+        $this->DireccionVendedor = $Direccion;
     }
 
     //getters y setters
     function getEmailVendedor(){
-        return $this->$EmailVendedor;
+        return $this->EmailVendedor;
     }
     function setEmailVendedor($Email){
-        $this->$EmailVendedor = $Email;
+        $this->EmailVendedor = $Email;
     }
 
     //getters y setters
     function getTelefonoVendedor(){
-        return $this->$TelefonoVendedor;
+        return $this->TelefonoVendedor;
     }
     function setTelefonoVendedor($Telefono){
-        $this->$TelefonoVendedor = $Telefono;
+        $this->TelefonoVendedor = $Telefono;
     }
 
     //getters y setters
-    function getUsuario(){
-        return $this->$Usuario;
+    function getIdUsuario(){
+        return $this->idUsuario;
     }
-    function setUsuario($User){
-        $this->$Usuario = $User;
+    function setIdUsuario($User){
+        $this->idUsuario = $User;
     }
 
 }

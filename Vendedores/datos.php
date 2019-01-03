@@ -14,7 +14,37 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                 <form action="#" method="POST">
                     <div class="form-group">
                         <label for=""></label>
-                        <input type="" class="form-control" id="" aria-describedby="" placeholder="">
+                        <input type="" class="form-control" id="NombresVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="ApellidoPVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="ApellidoMVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="CalleVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="NumExtVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="NumIntVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="ColoniaVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="AlcaldiaMunicipioVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="EstadoVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="EmailVendedor" aria-describedby="" placeholder="">
+
+                        <label for=""></label>
+                        <input type="" class="form-control" id="TelefonoVendedor" aria-describedby="" placeholder="">
                     </div>
                 </form>
             </div>

@@ -34,6 +34,7 @@ class idioma{
     public const INICIO_SESION_FAIL = "Oops!, we have a problem to start your sesion";
     public const INICIO_SESION_BTN = "Log in";
     public const INICIO_SESION_FAIL_ROL = "You do not have an assigned role, check with your administrator";
+    public const INICIO_SESION_FAIL_PASS = "Incorrect password";
     public const CIERRE_SESION = "Thank you for visiting us, we hope to see you soon!";
     public const CIERRE_SESION_FAIL = "It was not possible to close your session, try again later!";
 }

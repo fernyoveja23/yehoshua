@@ -35,6 +35,7 @@ class idioma
     public const INICIO_SESION_FAIL = "Hubo un problema al iniciar sesion";
     public const INICIO_SESION_BTN = "Iniciar sesion";
     public const INICIO_SESION_FAIL_ROL = "No tienes un rol asignado, consulta con tu administrador";
+    public const INICIO_SESION_FAIL_PASS = "Contraseña incorrecta";
     public const CIERRE_SESION = "¡Gracias por visitarnos, esperamos verte pronto!";
     public const CIERRE_SESION_FAIL = "¡No fue posible cerrar tu sesion, intentalo de nuevo mas tarde!";
 }
