@@ -17,4 +17,5 @@
     <script src="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/bootstrap-4.1.3/js/popper.min.js"></script>
     <script src="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/bootstrap-4.1.3/js/bootstrap.min.js"></script>
 
+    <script src="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/js/main.js"></script>
 </head>

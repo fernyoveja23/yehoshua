@@ -2,7 +2,7 @@
 class idioma
 {
     public const TITLE = "Viajes Yehoshúa";
-    public const SUBTITLE = "¡Más que un Viaje una Aventura!";
+    public const SUBTITLE = "¡Más que un viaje una Aventura!";
     public const MENU_ALT_IMG = "Viajes Yehoshúa";
     public const MENU_INICIO = "Inicio";
     public const MENU_EVENTOS = "Viajes";
@@ -38,5 +38,32 @@ class idioma
     public const INICIO_SESION_FAIL_PASS = "Contraseña incorrecta";
     public const CIERRE_SESION = "¡Gracias por visitarnos, esperamos verte pronto!";
     public const CIERRE_SESION_FAIL = "¡No fue posible cerrar tu sesion, intentalo de nuevo mas tarde!";
+    public const FORMULARIO_VENDEDOR_NOMBRE = "Escribe tu nombre(s)";
+    public const FORMULARIO_VENDEDOR_APELLIDOP = "Apellido paterno";
+    public const FORMULARIO_VENDEDOR_APELLIDOM = "Apellido materno";
+    public const FORMULARIO_VENDEDOR_CALLE = "Calle";
+    public const FORMULARIO_VENDEDOR_NUMEXT = "Número exterior";
+    public const FORMULARIO_VENDEDOR_NUMINT = "Número interior";
+    public const FORMULARIO_VENDEDOR_COLONIA = "Colonia";
+    public const FORMULARIO_VENDEDOR_ALCMUN = "Alcaldía o Municipio";
+    public const FORMULARIO_VENDEDOR_ESTADO = "Estado";
+    public const FORMULARIO_VENDEDOR_EMAIL = "Dirección de correo";
+    public const FORMULARIO_VENDEDOR_TELEFONO = "Teléfono";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_NOMBRE = "Nombre(s)";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOP = "Ap. paterno";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOM = "Ap. materno";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_CALLE = "Calle Ej. \"21, Morelos, Av. Insurgentes\" ";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_NUMEXT = "Núm. exterior";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_NUMINT = "Núm. interior (si existe)";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_COLONIA = "Colonia";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_ALCMUN = "Alcaldia o Municipio";
+    public const FORMULARIO_VENDEDOR_SELECT_ESTADO = "-- Estado --";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_EMAIL = "Email";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_TELEFONO = "Celular o fijo";
+    public const FORMULARIO_VENDEDOR_BOTON_ENVIAR = "Enviar";
+    public const FORMULARIO_VENDEDOR_BOTON_RESET = "Restablecer";
+    public const FORMULARIO_VENDEDOR_MSJ_BIEN = "¡Bien!";
+    public const FORMULARIO_VENDEDOR_MSJ_MAL = "¡Falta este dato para continuar!";
+    public const FORMULARIO_VENDEDOR_AYUDA_NUMEXT = "Si no tiene numero exterior pon un 0";
 }
 ?>

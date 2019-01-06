@@ -24,10 +24,10 @@ body {
   position: relative;
 }
 
-.hero-image-vendedor{
+.hero-image-vendedor {
   background-image: url("/yehoshua/resources/img/vendedores.jpg");
   background-color: #cccccc;
-  height: 90%;
+  height: 150%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -61,6 +61,31 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
+}
+
+.hero-text-form {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  width: 70%;
+}
+
+.borderline-form {
+  border-style: solid;
+  border-width: 0.2rem;
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  border-radius: 10px;
+  border-color: rgb(255, 103, 0);
 }
 
 .background-info {
@@ -98,10 +123,16 @@ body {
 }
 
 @media (min-width: 320px) {
-  .hero-image, 
+
+  .hero-image,
   .hero-image-logout,
-  .hero-image-users {
+  .hero-image-users,
+  .hero-image-vendedor {
     width: 320px;
+  }
+
+  .hero-image-vendedor {
+    height: 280%;
   }
 }
 
@@ -112,10 +143,16 @@ body {
 
   .hero-image,
   .hero-image-logout,
-  .hero-image-users {
+  .hero-image-users,
+  .hero-image-vendedor {
     width: 480px;
   }
+
+  .hero-image-vendedor {
+    height: 380%;
+  }
 }
+
 @media (min-width: 600px) {
   .mt-5 {
     margin-top: 5rem !important;
@@ -123,21 +160,40 @@ body {
 
   .hero-image,
   .hero-image-logout,
-  .hero-image-users {
+  .hero-image-users,
+  .hero-image-vendedor {
     width: 600px;
   }
-}
-@media(min-width: 768px){
-  .hero-image,
-  .hero-image-logout,
-  .hero-image-users {
-    width: 768px;
+
+  .hero-image-vendedor {
+    height: 130%;
   }
 }
-@media(min-width: 800px){
+
+@media(min-width: 768px) {
+
   .hero-image,
   .hero-image-logout,
-  .hero-image-users {
+  .hero-image-users,
+  .hero-image-vendedor {
+    width: 768px;
+  }
+
+  .hero-image-vendedor {
+    height: 100%;
+  }
+}
+
+@media(min-width: 800px) {
+
+  .hero-image,
+  .hero-image-logout,
+  .hero-image-users,
+  .hero-image-vendedor {
     width: 100%;
+  }
+
+  .hero-image-vendedor {
+    height: 150%;
   }
 }

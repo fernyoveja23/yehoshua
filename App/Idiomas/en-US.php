@@ -37,5 +37,32 @@ class idioma{
     public const INICIO_SESION_FAIL_PASS = "Incorrect password";
     public const CIERRE_SESION = "Thank you for visiting us, we hope to see you soon!";
     public const CIERRE_SESION_FAIL = "It was not possible to close your session, try again later!";
+    public const FORMULARIO_VENDEDOR_NOMBRE = "Enter your first name (s)";
+    public const FORMULARIO_VENDEDOR_APELLIDOP = "Last name";
+    public const FORMULARIO_VENDEDOR_APELLIDOM = "Mother's maiden name";
+    public const FORMULARIO_VENDEDOR_CALLE = "Street";
+    public const FORMULARIO_VENDEDOR_NUMEXT = "Outdoor Number";
+    public const FORMULARIO_VENDEDOR_NUMINT = "Interior number";
+    public const FORMULARIO_VENDEDOR_COLONIA = "Colony";
+    public const FORMULARIO_VENDEDOR_ALCMUN = "City Hall or Municipality";
+    public const FORMULARIO_VENDEDOR_ESTADO = "State";
+    public const FORMULARIO_VENDEDOR_EMAIL = "Mail address";
+    public const FORMULARIO_VENDEDOR_TELEFONO = "Phone number";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_NOMBRE = "Name (s)";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOP = "Last name";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOM = "Mother's last name";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_CALLE = "Street ";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_NUMEXT = "Outdoor Number";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_NUMINT = "Interior number";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_COLONIA = "Colony";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_ALCMUN = "City Hall or Municipality";
+    public const FORMULARIO_VENDEDOR_SELECT_ESTADO = "-- State --";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_EMAIL = "Email";
+    public const FORMULARIO_VENDEDOR_PLACEHOLDER_TELEFONO = "Phone number or cell phone";
+    public const FORMULARIO_VENDEDOR_BOTON_ENVIAR = "Send";
+    public const FORMULARIO_VENDEDOR_BOTON_RESET = "Reset";
+    public const FORMULARIO_VENDEDOR_MSJ_BIEN = "Ok!";
+    public const FORMULARIO_VENDEDOR_MSJ_MAL = "This data is needed to continue!";
+    public const FORMULARIO_VENDEDOR_AYUDA_NUMEXT = "If you do not have an external number, enter 0";
 }
 ?>
