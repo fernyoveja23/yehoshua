@@ -8,6 +8,8 @@ class Venta{
     public $Total;
     public $Evento;
     public $Cliente;
+    public $idVendedor;
+    public $idCancelacion;
 
     function __construct(){
         $idVenta = 0;
@@ -20,50 +22,66 @@ class Venta{
 
     //getters y setters
     function getIdVenta(){
-        return $this->$idVenta;
+        return $this->idVenta;
     }
     function setIdVenta($idV){
-        $this->$idVenta = $idV;
+        $this->idVenta = $idV;
     }
 
     //getters y setters
     function getFechaVenta(){
-        return $this->$fechaVenta;
+        return $this->fechaVenta;
     }
     function setFechaVenta($fechaV){
-        $this->$fechaVenta = $fechaV;
+        $this->fechaVenta = $fechaV;
     }
 
     //getters y setters
     function getNoViajerosVenta(){
-        return $this->$noViajerosVenta;
+        return $this->noViajerosVenta;
     }
     function setNoViajerosVenta($noViajeros){
-        $this->$noViajerosVenta = $noViajeros;
+        $this->noViajerosVenta = $noViajeros;
     }
 
     //getters y setters
     function getTotal(){
-        return $this->$Total;
+        return $this->Total;
     }
     function setTotal($Tot){
-        $this->$Total = $Tot;
+        $this->Total = $Tot;
     }
 
     //getters y setters
     function getEvento(){
-        return $this->$Evento;
+        return $this->Evento;
     }
     function setEvento($Even){
-        $this->$Evento = $Even;
+        $this->Evento = $Even;
     }
 
     //getters y setters
     function getCliente(){
-        return $this->$Cliente;
+        return $this->Cliente;
     }
     function setCliente($Clien){
-        $this->$Cliente = $Clien;
+        $this->Cliente = $Clien;
+    }
+
+    //getter y setter
+    function getIdVendedor(){
+        return $this->idVendedor;
+    }
+    function setIdVendedor($idVend){
+        $this->idVendedor = $idVend;
+    }
+
+    //getter y setter
+    function getIdCancelacion(){
+        return $this->idCancelacion;
+    }
+    function setIdCancelacion($IdCanc){
+        $this->idCancelacion = $IdCanc;
     }
 }
 ?>

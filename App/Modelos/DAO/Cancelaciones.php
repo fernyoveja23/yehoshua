@@ -1,19 +1,15 @@
-<?php
-include 'Venta.php';
-include 'CatCancelacion.php';
+<?phps
 class Cancelaciones{
     public $idCancelacion;
     public $fechaCancelacion;
     public $comisionCanelacion;
-    public $venta;
     public $catCancelacion;
 
     function __construct(){
         $idCancelacion = 0;
         $fechaCancelacion = new DateTime(null);
         $comisionCanelacion = 0;
-        $venta = new Venta;
-        $catCancelacion = new CatalogoCancelacion;
+        $catCancelacion = "";
     }
 
     //getters y setters
@@ -38,14 +34,6 @@ class Cancelaciones{
     }
     function setComisionCanelacion($comision){
         $this->$comisionCanelacion = $comision;
-    }
-
-    //getters y setters
-    function getVenta(){
-        return $this->$venta;
-    }
-    function setVenta($ven){
-        $this->$venta = $ven;
     }
 
     //getters y setters

@@ -30,6 +30,25 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `yehoshua`.`cancelaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `yehoshua`.`cancelaciones` (
+  `idCancelaciones` INT(11) NOT NULL,
+  `FechaCancelacion` DATETIME NULL DEFAULT NULL,
+  `ComisiónCancelacion` INT(11) NULL DEFAULT NULL,
+  `CatCancelacion_idCatCancelacion` CHAR(3) NOT NULL,
+  PRIMARY KEY (`idCancelaciones`),
+  INDEX `fk_Cancelaciones_CatCancelacion1_idx` (`CatCancelacion_idCatCancelacion` ASC) VISIBLE,
+  CONSTRAINT `fk_Cancelaciones_CatCancelacion1`
+    FOREIGN KEY (`CatCancelacion_idCatCancelacion`)
+    REFERENCES `yehoshua`.`catcancelacion` (`idCatCancelacion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `yehoshua`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`cliente` (
@@ -103,60 +122,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `yehoshua`.`venta`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
-  `idVenta` INT(11) NOT NULL,
-  `FechaVenta` DATETIME NOT NULL,
-  `NoViajerosVenta` INT(11) NOT NULL,
-  `Total` DECIMAL(2,0) NULL DEFAULT NULL,
-  `idEvento` INT(11) NOT NULL,
-  `idCliente` INT(11) NOT NULL,
-  `idVendedor` INT(11) NULL,
-  PRIMARY KEY (`idVenta`),
-  INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC) VISIBLE,
-  INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
-  CONSTRAINT `idCliente`
-    FOREIGN KEY (`idCliente`)
-    REFERENCES `yehoshua`.`cliente` (`idCliente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `idEvento`
-    FOREIGN KEY (`idEvento`)
-    REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `yehoshua`.`cancelaciones`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `yehoshua`.`cancelaciones` (
-  `idCancelaciones` INT(11) NOT NULL,
-  `FechaCancelacion` DATETIME NULL DEFAULT NULL,
-  `ComisiónCancelacion` INT(11) NULL DEFAULT NULL,
-  `idVenta` INT(11) NOT NULL,
-  `CatCancelacion_idCatCancelacion` CHAR(3) NOT NULL,
-  PRIMARY KEY (`idCancelaciones`),
-  INDEX `fk_Cancelaciones_Venta1_idx` (`idVenta` ASC) VISIBLE,
-  INDEX `fk_Cancelaciones_CatCancelacion1_idx` (`CatCancelacion_idCatCancelacion` ASC) VISIBLE,
-  CONSTRAINT `fk_Cancelaciones_CatCancelacion1`
-    FOREIGN KEY (`CatCancelacion_idCatCancelacion`)
-    REFERENCES `yehoshua`.`catcancelacion` (`idCatCancelacion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `idVenta`
-    FOREIGN KEY (`idVenta`)
-    REFERENCES `yehoshua`.`venta` (`idVenta`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `yehoshua`.`lugar`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`lugar` (
@@ -202,6 +167,41 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`usuariorol` (
   CONSTRAINT `fk_usuarios`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `yehoshua`.`usuarios` (`idusuarios`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `yehoshua`.`venta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
+  `idVenta` INT(11) NOT NULL,
+  `FechaVenta` DATETIME NOT NULL,
+  `NoViajerosVenta` INT(11) NOT NULL,
+  `Total` DECIMAL(2,0) NULL DEFAULT NULL,
+  `idEvento` INT(11) NOT NULL,
+  `idCliente` INT(11) NOT NULL,
+  `idVendedor` INT(11) NULL,
+  `cancelaciones_idCancelaciones` INT(11) NOT NULL,
+  PRIMARY KEY (`idVenta`),
+  INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC) VISIBLE,
+  INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
+  INDEX `fk_venta_cancelaciones1_idx` (`cancelaciones_idCancelaciones` ASC) VISIBLE,
+  CONSTRAINT `idCliente`
+    FOREIGN KEY (`idCliente`)
+    REFERENCES `yehoshua`.`cliente` (`idCliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idEvento`
+    FOREIGN KEY (`idEvento`)
+    REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_venta_cancelaciones1`
+    FOREIGN KEY (`cancelaciones_idCancelaciones`)
+    REFERENCES `yehoshua`.`cancelaciones` (`idCancelaciones`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
