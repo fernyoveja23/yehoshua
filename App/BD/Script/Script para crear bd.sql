@@ -5,9 +5,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
 -- Schema yehoshua
 -- -----------------------------------------------------
 
@@ -78,6 +75,16 @@ COLLATE = utf8_bin;
 
 
 -- -----------------------------------------------------
+-- Table `yehoshua`.`cataprobacion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `yehoshua`.`cataprobacion` (
+  `idcataprobacion` CHAR(3) NOT NULL,
+  `descripcionCatAprobacion` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idcataprobacion`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `yehoshua`.`vendedor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`vendedor` (
@@ -87,11 +94,18 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`vendedor` (
   `EmailVendedor` VARCHAR(100) NOT NULL,
   `TelefonoVendedor` VARCHAR(25) NOT NULL,
   `idUsuario` INT(11) NOT NULL,
+  `cataprobacion_idcataprobacion` CHAR(3) NOT NULL,
   PRIMARY KEY (`idVendedor`),
   INDEX `fk_usuario_vendedor_idx` (`idUsuario` ASC) VISIBLE,
+  INDEX `fk_vendedor_cataprobacion1_idx` (`cataprobacion_idcataprobacion` ASC) VISIBLE,
   CONSTRAINT `fk_usuario_vendedor`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `yehoshua`.`usuarios` (`idusuarios`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vendedor_cataprobacion1`
+    FOREIGN KEY (`cataprobacion_idcataprobacion`)
+    REFERENCES `yehoshua`.`cataprobacion` (`idcataprobacion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -184,11 +198,11 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
   `idEvento` INT(11) NOT NULL,
   `idCliente` INT(11) NOT NULL,
   `idVendedor` INT(11) NULL,
-  `cancelaciones_idCancelaciones` INT(11) NOT NULL,
+  `idCancelaciones` INT(11) NOT NULL,
   PRIMARY KEY (`idVenta`),
   INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC) VISIBLE,
   INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
-  INDEX `fk_venta_cancelaciones1_idx` (`cancelaciones_idCancelaciones` ASC) VISIBLE,
+  INDEX `fk_venta_cancelaciones1_idx` (`idCancelaciones` ASC) VISIBLE,
   CONSTRAINT `idCliente`
     FOREIGN KEY (`idCliente`)
     REFERENCES `yehoshua`.`cliente` (`idCliente`)
@@ -200,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_venta_cancelaciones1`
-    FOREIGN KEY (`cancelaciones_idCancelaciones`)
+    FOREIGN KEY (`idCancelaciones`)
     REFERENCES `yehoshua`.`cancelaciones` (`idCancelaciones`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)

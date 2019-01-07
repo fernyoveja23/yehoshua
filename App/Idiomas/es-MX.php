@@ -65,5 +65,9 @@ class idioma
     public const FORMULARIO_VENDEDOR_MSJ_BIEN = "¡Bien!";
     public const FORMULARIO_VENDEDOR_MSJ_MAL = "¡Falta este dato para continuar!";
     public const FORMULARIO_VENDEDOR_AYUDA_NUMEXT = "Si no tiene numero exterior pon un 0";
+    public const FORMULARIO_VENDEDOR_AYUDA_CORREO = "Introduce un correo valido";
+    public const FORMULARIO_VENDEDOR_AYUDA_TELEFONO = "De preferencia pon tu numero de celular para contactar nos contigo en casos de urgencia";
+    public const FORMULARIO_VENDEDOR_INFO_CONTACTO = "Se cuidadoso con estos datos, ya que será el medio por el cual nos comunicaremos contigo.";
+    public const FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO = "En dado caso que no podamos, <span class=\"text-advertencia\"> ¡no podrás publicar tus viajes!</span>";
 }
 ?>

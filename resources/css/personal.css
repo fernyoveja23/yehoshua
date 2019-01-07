@@ -122,6 +122,12 @@ body {
   font-size: 1.5rem;
 }
 
+.text-advertencia{
+  color: rgb(255,20,20);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 @media (min-width: 320px) {
 
   .hero-image,

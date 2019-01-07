@@ -64,5 +64,9 @@ class idioma{
     public const FORMULARIO_VENDEDOR_MSJ_BIEN = "Ok!";
     public const FORMULARIO_VENDEDOR_MSJ_MAL = "This data is needed to continue!";
     public const FORMULARIO_VENDEDOR_AYUDA_NUMEXT = "If you do not have an external number, enter 0";
+    public const FORMULARIO_VENDEDOR_AYUDA_CORREO = "Enter a valid email";
+    public const FORMULARIO_VENDEDOR_AYUDA_TELEFONO = "Preferably put your cell phone number to contact us with you in cases of urgency";
+    public const FORMULARIO_VENDEDOR_INFO_CONTACTO = "Be careful with this data, as it will be the means by which we will communicate with you.";
+    public const FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO = "In case we can not, <span class=\"text-advertencia\"> you can not publish your trips!</span>";
 }
 ?>

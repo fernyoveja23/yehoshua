@@ -12,11 +12,12 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
 
         <div class="hero-image-vendedor mt-5">
             <div class="hero-text-form background-info">
+                <?php var_dump($_POST); ?>
                 <form action="#" method="POST" class="needs-validation" novalidate>
                     <div class="form-row borderline-form justify-content-center">
                         <div class="form-group col-sm-5">
                             <label class="col-smcol-form-label" for="NombresVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_NOMBRE; ?></label>
-                            <input type="text" class="form-control" id="NombresVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NOMBRE; ?>" required>
+                            <input type="text" class="form-control" id="NombresVendedor" name="nombre" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NOMBRE; ?>" required>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -26,7 +27,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-5">
                             <label for="ApellidoPVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_APELLIDOP; ?></label>
-                            <input type="text" class="form-control" id="ApellidoPVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOP; ?>" required>
+                            <input type="text" class="form-control" id="ApellidoPVendedor" name="apellidop" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOP; ?>" required>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -36,7 +37,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-5">
                             <label for="ApellidoMVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_APELLIDOM; ?></label>
-                            <input type="text" class="form-control" id="ApellidoMVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOM; ?>" required>
+                            <input type="text" class="form-control" id="ApellidoMVendedor" name="apellidom" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_APELLIDOM; ?>" required>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -48,7 +49,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                     <div class="form-row borderline-form justify-content-center">
                         <div class="form-group col-sm-3">
                             <label for="CalleVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_CALLE; ?></label>
-                            <input type="text" class="form-control" id="CalleVendedor" aria-describedby="" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_CALLE; ?>" required>
+                            <input type="text" class="form-control" id="CalleVendedor" name="calle" aria-describedby="" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_CALLE; ?>" required>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -58,7 +59,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-3">
                             <label for="NumExtVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_NUMEXT; ?></label>
-                            <input type="number" class="form-control" id="NumExtVendedor" aria-describedby="NumExtHelp" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NUMEXT; ?>" required>
+                            <input type="number" class="form-control" id="NumExtVendedor" name="numext" min="0" value="0" aria-describedby="NumExtHelp" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NUMEXT; ?>" required>
                             <small id="NumExtHelp" class="form-text text-muted"><?php echo idioma::FORMULARIO_VENDEDOR_AYUDA_NUMEXT; ?></small>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
@@ -69,11 +70,11 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-3">
                             <label for="NumIntVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_NUMINT; ?></label>
-                            <input type="number" class="form-control" id="NumIntVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NUMINT; ?>">                            
+                            <input type="number" class="form-control" id="NumIntVendedor" name="numint" min="0" value="0" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NUMINT; ?>">                            
                         </div>
                         <div class="form-group col-sm-5">
                             <label for="ColoniaVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_COLONIA; ?></label>
-                            <input type="text" class="form-control" id="ColoniaVendedor" aria-describedby="" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_COLONIA; ?>" required>
+                            <input type="text" class="form-control" id="ColoniaVendedor" name="colonia" aria-describedby="" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_COLONIA; ?>" required>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -83,7 +84,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-5">
                             <label for="AlcaldiaMunicipioVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_ALCMUN; ?></label>
-                            <input type="text" class="form-control" id="AlcaldiaMunicipioVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_ALCMUN; ?>" required>
+                            <input type="text" class="form-control" id="AlcaldiaMunicipioVendedor" name="alcaldiamunicipio" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_ALCMUN; ?>" required>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -93,7 +94,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-3">
                             <label for="EstadoVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_ESTADO; ?></label>                        
-                            <select id="EstadoVendedor" class="custom-select" required>
+                            <select id="EstadoVendedor" name="estado" class="custom-select" required>
                                 <option value="" selected><?php echo idioma::FORMULARIO_VENDEDOR_SELECT_ESTADO; ?></option>
                                 <option value="1">Aguascalientes</option>
                                 <option value="2">Baja California</option>
@@ -139,7 +140,8 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                     <div class="form-row borderline-form justify-content-center">
                         <div class="form-group col-sm-5">
                             <label for="EmailVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_EMAIL; ?></label>
-                            <input type="email" class="form-control" id="EmailVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_EMAIL; ?>" required>
+                            <input type="email" class="form-control" id="EmailVendedor" name="email" aria-describedby="EmailHelp" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_EMAIL; ?>" required>
+                            <small id="EmailHelp" class="form-text text-muted"><?php echo idioma::FORMULARIO_VENDEDOR_AYUDA_CORREO; ?></small>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
@@ -149,14 +151,17 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-5">  
                             <label for="TelefonoVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_TELEFONO; ?></label>
-                            <input type="" class="form-control" id="TelefonoVendedor" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_TELEFONO; ?>" required>
+                            <input type="" class="form-control" id="TelefonoVendedor" name="telefono" aria-describedby="TelefonoHelp" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_TELEFONO; ?>" required>
+                            <small id="TelefonoHelp" class="form-text text-muted"><?php echo idioma::FORMULARIO_VENDEDOR_AYUDA_TELEFONO; ?></small>
                             <div class="invalid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_MAL; ?>
                             </div>
                             <div class="valid-feedback">
                                 <?php echo idioma::FORMULARIO_VENDEDOR_MSJ_BIEN; ?>
-                            </div>
+                            </div>                            
                         </div>
+                        <p><?php echo idioma::FORMULARIO_VENDEDOR_INFO_CONTACTO; ?></p>
+                        <p><?php echo idioma::FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO; ?></p>
                     </div>
                     <input type="reset" class="btn btn-secondary" value="<?php echo idioma::FORMULARIO_VENDEDOR_BOTON_RESET; ?>">
                     <button type="submit" class="btn btn-primary"><?php echo idioma::FORMULARIO_VENDEDOR_BOTON_ENVIAR; ?></button>
