@@ -63,6 +63,7 @@ class idioma{
     public const FORMULARIO_VENDEDOR_BOTON_RESET = "Reset";
     public const FORMULARIO_VENDEDOR_MSJ_BIEN = "Ok!";
     public const FORMULARIO_VENDEDOR_MSJ_MAL = "This data is needed to continue!";
+    public const FORMULARIO_VENDEDOR_AYUDA_NUMINT = "You can use this field to put letters to your outer number has some";
     public const FORMULARIO_VENDEDOR_AYUDA_NUMEXT = "If you do not have an external number, enter 0";
     public const FORMULARIO_VENDEDOR_AYUDA_CORREO = "Enter a valid email";
     public const FORMULARIO_VENDEDOR_AYUDA_TELEFONO = "Preferably put your cell phone number to contact us with you in cases of urgency";

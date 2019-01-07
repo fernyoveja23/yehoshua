@@ -64,6 +64,7 @@ class idioma
     public const FORMULARIO_VENDEDOR_BOTON_RESET = "Restablecer";
     public const FORMULARIO_VENDEDOR_MSJ_BIEN = "¡Bien!";
     public const FORMULARIO_VENDEDOR_MSJ_MAL = "¡Falta este dato para continuar!";
+    public const FORMULARIO_VENDEDOR_AYUDA_NUMINT = "Puedes usar este campo para poner letras si tu numero exterior tiene alguna";
     public const FORMULARIO_VENDEDOR_AYUDA_NUMEXT = "Si no tiene numero exterior pon un 0";
     public const FORMULARIO_VENDEDOR_AYUDA_CORREO = "Introduce un correo valido";
     public const FORMULARIO_VENDEDOR_AYUDA_TELEFONO = "De preferencia pon tu numero de celular para contactar nos contigo en casos de urgencia";

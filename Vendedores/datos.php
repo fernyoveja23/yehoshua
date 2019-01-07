@@ -70,7 +70,8 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-3">
                             <label for="NumIntVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_NUMINT; ?></label>
-                            <input type="number" class="form-control" id="NumIntVendedor" name="numint" min="0" value="0" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NUMINT; ?>">                            
+                            <input type="text" class="form-control" id="NumIntVendedor" name="numint" aria-describedby="NumIntHelp" placeholder="<?php echo idioma::FORMULARIO_VENDEDOR_PLACEHOLDER_NUMINT; ?>">                            
+                            <small id="NumIntHelp" class="form-text text-muted"><?php echo idioma::FORMULARIO_VENDEDOR_AYUDA_NUMINT; ?></small>
                         </div>
                         <div class="form-group col-sm-5">
                             <label for="ColoniaVendedor"><?php echo idioma::FORMULARIO_VENDEDOR_COLONIA; ?></label>
