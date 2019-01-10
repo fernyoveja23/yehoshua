@@ -54,6 +54,16 @@ body {
   position: relative;
 }
 
+.hero-image-admin {
+  background-image: url("/yehoshua/resources/img/administracion.jpg");
+  background-color: #cccccc;
+  height: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 .hero-text {
   text-align: center;
   position: absolute;

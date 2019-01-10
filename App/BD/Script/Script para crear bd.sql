@@ -69,7 +69,7 @@ COLLATE = utf8_bin;
 -- Table `yehoshua`.`vendedor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`vendedor` (
-  `idVendedor` INT(11) NOT NULL,
+  `idVendedor` INT(11) NOT NULL AUTO_INCREMENT,
   `NombreVendedor` VARCHAR(150) NOT NULL,
   `DireccionVendedor` VARCHAR(300) NOT NULL,
   `EmailVendedor` VARCHAR(100) NOT NULL,

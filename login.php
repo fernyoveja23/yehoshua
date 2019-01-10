@@ -43,15 +43,21 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresControl
                                 //se conserva su tipo, estructura y valores.
                                 $_SESSION['usuarioObj'] = serialize($usuario);
                                 $_SESSION["rol"]=$rol;
-                                $_SESSION["nombreUsuario"]=$vendedor->getNombreVendedor();
+                                $_SESSION["nombreUsuario"]=$vendedor->getNombreNormal();
                                 $_SESSION["vendedorObj"] = serialize($vendedor);
                                 echo "Bienvenido";
                                 header("Location:index.php");
                             }else{
                                 $_SESSION["usuario"]=$usuario->getUsername();
+                                $_SESSION['usuarioObj'] = serialize($usuario);
                                 $_SESSION["rol"]=$rol;
                                 echo "Bienvenido";
-                                header("Location:Vendedores/datos.php");
+                                if($rol==="Admin"){
+                                    header("Location:index.php");
+                                }else{
+                                    header("Location:Vendedores/datos.php");
+                                }
+                                
                             }                           
                         } else {
                             ?>

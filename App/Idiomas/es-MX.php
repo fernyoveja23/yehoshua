@@ -17,6 +17,8 @@ class idioma
     public const MENU_BUSCAR = "Buscar";
     public const MENU_BUSCAR_PLACE = "Busca tu viaje";
     public const MENU_REGISTRAR_VENDEDOR = "Completra tu registro";
+    public const MENU_APROBAR_VENDEDOR = "Aprobaciones";
+    public const MENU_ADMINISTRADORES = "Administración";
     public const FOOT_DERECHOS = "© 2018 Copyright:";
     public const FOOT_EMPRESA = "Viajes Yehoshúa";
     public const REGISTRO_NO_ADMIN = "¡No se tiene registro de un administrador!";
@@ -70,5 +72,7 @@ class idioma
     public const FORMULARIO_VENDEDOR_AYUDA_TELEFONO = "De preferencia pon tu numero de celular para contactar nos contigo en casos de urgencia";
     public const FORMULARIO_VENDEDOR_INFO_CONTACTO = "Se cuidadoso con estos datos, ya que será el medio por el cual nos comunicaremos contigo.";
     public const FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO = "En dado caso que no podamos, <span class=\"text-advertencia\"> ¡no podrás publicar tus viajes!</span>";
+    public const FORMULARIO_VENDEDOR_BIEN = "Felicidades, solo te hace falta esperar tu aprobacion";
+    public const FORMULARIO_VENDEDOR_MAL = "Algo salio mal al intentar guardar tus datos.";
 }
 ?>

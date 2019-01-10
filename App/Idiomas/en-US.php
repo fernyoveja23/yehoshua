@@ -16,6 +16,8 @@ class idioma{
     public const MENU_BUSCAR = "Search";
     public const MENU_BUSCAR_PLACE = "look for your trip";
     public const MENU_REGISTRAR_VENDEDOR = "Complete your registration";
+    public const MENU_APROBAR_VENDEDOR = "Approvals";
+    public const MENU_ADMINISTRADORES = "Administration";
     public const FOOT_DERECHOS = "© 2018 Copyright:";
     public const FOOT_EMPRESA = "Viajes Yehoshúa";
     public const REGISTRO_NO_ADMIN = "There is no record of an administrator!";
@@ -69,5 +71,7 @@ class idioma{
     public const FORMULARIO_VENDEDOR_AYUDA_TELEFONO = "Preferably put your cell phone number to contact us with you in cases of urgency";
     public const FORMULARIO_VENDEDOR_INFO_CONTACTO = "Be careful with this data, as it will be the means by which we will communicate with you.";
     public const FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO = "In case we can not, <span class=\"text-advertencia\"> you can not publish your trips!</span>";
+    public const FORMULARIO_VENDEDOR_BIEN = "Congratulations, you only need to wait for your approval";
+    public const FORMULARIO_VENDEDOR_MAL = "Something went wrong when trying to save your data.";
 }
 ?>

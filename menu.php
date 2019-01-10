@@ -44,11 +44,27 @@
                     </li>
                         <?php
 
-                    } else {
+                    } elseif (!isset($_SESSION["nombreUsuario"]) && $_SESSION["rol"] == "Admin") {
+                        /**
+                         * Solo para Administradores
+                         */
+                        ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarAdministrador" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo idioma::MENU_ADMINISTRADORES; ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarAdministrador">
+                            <a class="dropdown-item" href='/yehoshua/Administracion/Aprobaciones.php'><?php echo idioma::MENU_APROBAR_VENDEDOR; ?></a>
+                            <a class="dropdown-item" href='/yehoshua/logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
+                        </div>
+                    </li>                    
+                    <?php
+                    }
+                     else {
                         ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarVendedor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $_SESSION["nombreUsuarios"]; ?>
+                            <?php echo $_SESSION["nombreUsuario"]; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarVendedor">
                             <a class="dropdown-item" href='/yehoshua/logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>

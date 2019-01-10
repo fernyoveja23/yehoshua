@@ -14,6 +14,7 @@ class VendedoresFacade
             $last_id = $conn->insert_id;
             return $last_id;
         } else {
+                trigger_error('Invalid query: ' . $conn->error);
             return 0;
         }
     }
@@ -23,7 +24,7 @@ class VendedoresFacade
      */
     public function getVendedorById($conn, $userId)
     {
-        $sql = "SELECT * FROM vendedor WHERE idUsuario = '" . $userId . "'";
+        $sql = "SELECT * FROM vendedor WHERE usuarios_idusuarios = '" . $userId . "'";
         $result = $conn->query($sql);
         //Para checar si existe un error, cual es.
         if (!$result) {

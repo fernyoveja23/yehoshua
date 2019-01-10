@@ -65,5 +65,8 @@ class Vendedor{
         $this->idUsuario = $User;
     }
 
+    function getNombreNormal(){
+        return str_replace("-"," ",$this->NombreVendedor);
+    }
 }
 ?>

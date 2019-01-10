@@ -7,12 +7,55 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
     <body>
         <?php
         include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
+        include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
+        include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresController.php';
         
         ?>    
 
         <div class="hero-image-vendedor mt-5">
             <div class="hero-text-form background-info">
-                <?php var_dump($_POST); ?>
+                <?php 
+                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Modelos/DAO/Usuarios.php';
+
+                $conection = new MySQLConexion;
+
+                $conn = $conection->getConexion();
+                $vendedoresController = new VendedoresController($conn);
+
+                if(COUNT($_POST)===11){
+                    $numint;
+                    if(trim($_POST["numint"])==''){
+                        $numint = 0;
+                    }else{
+                        $numint = trim($_POST["numint"]);
+                    }
+                    $nombreVendedor = trim($_POST["nombre"])."-".trim($_POST["apellidop"])."-".trim($_POST["apellidom"]);
+                    $direccionVendedor= trim($_POST["calle"])."|".trim($_POST["numext"])."|".$numint
+                    ."|".trim($_POST["colonia"])."|".trim($_POST["alcaldiamunicipio"])."|".trim($_POST["estado"]);
+                    $email = trim($_POST["email"]);
+                    $telefono = trim($_POST["telefono"]);
+                    $usuario = unserialize($_SESSION["usuarioObj"]);
+
+                    $vendedor = $vendedoresController->saveData($nombreVendedor,$direccionVendedor,$email,$telefono,$usuario->getidUsuario());
+                    if($vendedor != 0){
+                        $resultadoVendedor = $vendedoresController->getVendedorByIdUsuario($usuario->getidUsuario());
+                        $_SESSION["nombreUsuario"]=$resultadoVendedor->getNombreNormal();
+                        $_SESSION["vendedorObj"] = serialize($resultadoVendedor);
+                        ?>
+                        <p><?php echo idioma::FORMULARIO_VENDEDOR_BIEN; ?></p>
+                        <?php
+                    }else{
+                        ?>
+                        <p><?php echo idioma::FORMULARIO_VENDEDOR_MAL; ?></p>
+                        <?php
+                    }
+                    $conn->close();
+                    ?>
+                    </div>
+                </div>
+                <?php
+                }else{
+                ?>
                 <form action="#" method="POST" class="needs-validation" novalidate>
                     <div class="form-row borderline-form justify-content-center">
                         <div class="form-group col-sm-5">
@@ -170,7 +213,9 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
             </div>
         </div>
             <?php
+                }
             include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/foot.php';
+            
             ?>
     </body>
     
