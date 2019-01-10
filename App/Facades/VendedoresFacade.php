@@ -5,6 +5,9 @@ class VendedoresFacade
     public function select($conn, $sql)
     {
         $result = $conn->query($sql);
+        if (!$result) {
+            trigger_error('Invalid query: ' . $conn->error);
+        }
         return $result;
     }
 
@@ -17,6 +20,17 @@ class VendedoresFacade
                 trigger_error('Invalid query: ' . $conn->error);
             return 0;
         }
+    }
+
+    public function update($conn, $sql)
+    {
+        $conn->query($sql);
+        if (mysqli_affected_rows($conn)==0) {
+            trigger_error('Invalid query: ' . $conn->error);
+            return 0;
+        }else{
+            return 1;
+        }        
     }
 
     /**

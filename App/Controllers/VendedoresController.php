@@ -17,11 +17,13 @@ class VendedoresController{
         $result = $this->vendedoresFacade->insert($this->conn, $sql);
 
         if($result!=0){
+            $this->conn->commit();
             return $result;
         }else{            
             $this->conn->rollback();
+            return $result;
         }
-        return $result;
+        
     }
 
     /**
@@ -49,6 +51,30 @@ class VendedoresController{
             $vendedor->setTelefonoVendedor("");
             $vendedor->setIdUsuario("");
             return $vendedor;
+        }
+    }
+
+    public function getVendedoresRevision(){
+        $sql = "SELECT * FROM vendedor WHERE cataprobacion_idcataprobacion = 'REV'";
+        $result = $this->vendedoresFacade->select($this->conn,$sql);
+        if ($result->num_rows >= 1) {
+            return $result;
+            
+        } else {
+
+            return NULL;
+        }
+    }
+
+    public function updateVendedorEstado($idUsuario){
+        $sql = "UPDATE vendedor SET cataprobacion_idcataprobacion = 'APR' WHERE usuarios_idusuarios = '".$idUsuario."'";
+        $result = $this->vendedoresFacade->update($this->conn,$sql);
+        if($result==0){
+            $this->conn->rollback();
+            return $result;
+        }else{
+            $this->conn->commit();
+            return $result;
         }
     }
 }

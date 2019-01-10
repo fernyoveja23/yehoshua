@@ -67,6 +67,7 @@
                             <?php echo $_SESSION["nombreUsuario"]; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarVendedor">
+                            <a class="dropdown-item" href='#'>Publica evento</a>
                             <a class="dropdown-item" href='/yehoshua/logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
                         </div>
                     </li>                    

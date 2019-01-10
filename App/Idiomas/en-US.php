@@ -73,5 +73,14 @@ class idioma{
     public const FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO = "In case we can not, <span class=\"text-advertencia\"> you can not publish your trips!</span>";
     public const FORMULARIO_VENDEDOR_BIEN = "Congratulations, you only need to wait for your approval";
     public const FORMULARIO_VENDEDOR_MAL = "Something went wrong when trying to save your data.";
+    public const APROBACIONES_COLUMNA_NOMBRE = "Name";    
+    public const APROBACIONES_COLUMNA_DIR = "Address";    
+    public const APROBACIONES_COLUMNA_EMAIL = "Email";    
+    public const APROBACIONES_COLUMNA_TEL = "Phone";    
+    public const APROBACIONES_COLUMNA_APR = "Approve";    
+    public const APROBACIONES_BOTON_APROB = "Approve seller";  
+    public const APROBACIONES_EXITO = "<p>The seller was approved successfully!</p>";
+    public const APROBACIONES_FALLO = "<p>There was a problem updating the seller</p>"; 
+    public const APROBACIONES_NO_HAY = "<p>There are no new vendors that need your revision</p>";  
 }
 ?>

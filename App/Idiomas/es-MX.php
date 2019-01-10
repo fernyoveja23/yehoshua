@@ -74,5 +74,14 @@ class idioma
     public const FORMULARIO_VENDEDOR_ADVERTENCIA_CONTACTO = "En dado caso que no podamos, <span class=\"text-advertencia\"> ¡no podrás publicar tus viajes!</span>";
     public const FORMULARIO_VENDEDOR_BIEN = "Felicidades, solo te hace falta esperar tu aprobacion";
     public const FORMULARIO_VENDEDOR_MAL = "Algo salio mal al intentar guardar tus datos.";
+    public const APROBACIONES_COLUMNA_NOMBRE = "Nombre";    
+    public const APROBACIONES_COLUMNA_DIR = "Dirección";    
+    public const APROBACIONES_COLUMNA_EMAIL = "Email";    
+    public const APROBACIONES_COLUMNA_TEL = "Telefono";    
+    public const APROBACIONES_COLUMNA_APR = "Aprobar";    
+    public const APROBACIONES_BOTON_APROB = "Aprobar vendedor";    
+    public const APROBACIONES_EXITO = "<p>¡El vendedor fue aprobado con exito!</p>";
+    public const APROBACIONES_FALLO = "<p>Hubo un problema al actualizar al vendedor</p>";
+    public const APROBACIONES_NO_HAY = "<p>No hay vendedores nuevos que necesiten de su revision</p>";  
 }
 ?>

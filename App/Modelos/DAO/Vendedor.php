@@ -68,5 +68,9 @@ class Vendedor{
     function getNombreNormal(){
         return str_replace("-"," ",$this->NombreVendedor);
     }
+
+    function getDireccionNormal(){
+        return str_replace("|"," ",$this->DireccionVendedor);
+    }
 }
 ?>
