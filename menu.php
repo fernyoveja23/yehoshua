@@ -11,22 +11,8 @@
                     <li class="navbar-item">
                         <a class="nav-link" href="#"><?php echo idioma::MENU_EVENTOS; ?></a>
                     </li>
-                <?php
-                if (!isset($_SESSION["usuario"]) && !isset($_SESSION["rol"])) {
-
-                    ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarSesiones" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo idioma::MENU_VENDEDORES; ?>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarSesiones">
-                            <a class="dropdown-item" href="/yehoshua/Vendedores/register.php"><?php echo idioma::MENU_VENDEDORES_SIGIN; ?></a>
-                            <a class="dropdown-item" href="/yehoshua/login.php"><?php echo idioma::MENU_VENDEDORES_LOGIN; ?></a>
-                        </div>
-                    </li>
                     <?php
-
-                } else {
+                if (isset($_SESSION["usuario"]) && isset($_SESSION["rol"])) {
                     /**
                      * Solo los vendedores tienen que registrar sus datos para que sean aprobados
                      * por ello se tienen que llenar los datos si o si.
@@ -67,7 +53,7 @@
                             <?php echo $_SESSION["nombreUsuario"]; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarVendedor">
-                            <a class="dropdown-item" href='#'>Publica evento</a>
+                            <a class="dropdown-item" href='/yehoshua/Vendedores/evento.php'><?php echo idioma::MENU_PUBLICAR_EVENTO; ?></a>
                             <a class="dropdown-item" href='/yehoshua/logout.php'><?php echo idioma::MENU_LOGOUT; ?></a>
                         </div>
                     </li>                    

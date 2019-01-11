@@ -19,6 +19,7 @@ class idioma
     public const MENU_REGISTRAR_VENDEDOR = "Completra tu registro";
     public const MENU_APROBAR_VENDEDOR = "Aprobaciones";
     public const MENU_ADMINISTRADORES = "Administración";
+    public const MENU_PUBLICAR_EVENTO = "Publica tu evento";
     public const FOOT_DERECHOS = "© 2018 Copyright:";
     public const FOOT_EMPRESA = "Viajes Yehoshúa";
     public const REGISTRO_NO_ADMIN = "¡No se tiene registro de un administrador!";
@@ -79,9 +80,13 @@ class idioma
     public const APROBACIONES_COLUMNA_EMAIL = "Email";    
     public const APROBACIONES_COLUMNA_TEL = "Telefono";    
     public const APROBACIONES_COLUMNA_APR = "Aprobar";    
+    public const APROBACIONES_COLUMNA_DEN = "Rechazar";    
     public const APROBACIONES_BOTON_APROB = "Aprobar vendedor";    
+    public const APROBACIONES_BOTON_DENEG = "Rechazar vendedor";    
     public const APROBACIONES_EXITO = "<p>¡El vendedor fue aprobado con exito!</p>";
-    public const APROBACIONES_FALLO = "<p>Hubo un problema al actualizar al vendedor</p>";
+    public const APROBACIONES_FALLO = "<p>Hubo un problema al aprobar al vendedor</p>";
+    public const DENEGACIONES_EXITO = "<p>El vendedor fue rechazado con exito</p>";
+    public const DENEGACIONES_FALLO = "<p>Hubo un problema al rechazar al vendedor</p>";
     public const APROBACIONES_NO_HAY = "<p>No hay vendedores nuevos que necesiten de su revision</p>";  
 }
 ?>

@@ -26,7 +26,7 @@ class VendedoresFacade
     {
         $conn->query($sql);
         if (mysqli_affected_rows($conn)==0) {
-            trigger_error('Invalid query: ' . $conn->error);
+            trigger_error('Invalid query: Nothing to change');
             return 0;
         }else{
             return 1;

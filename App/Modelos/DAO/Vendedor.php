@@ -5,6 +5,7 @@ class Vendedor{
     public $DireccionVendedor;
     public $EmailVendedor;
     public $TelefonoVendedor;
+    public $aprobacion;
     public $idUsuario;
 
     //Constructor
@@ -14,6 +15,7 @@ class Vendedor{
         $this->DireccionVendedor="";
         $this->EmailVendedor="";
         $this->TelefonoVendedor="";
+        $this->aprobacion="";
         $this->Usuario = 0;
     }
 
@@ -55,6 +57,14 @@ class Vendedor{
     }
     function setTelefonoVendedor($Telefono){
         $this->TelefonoVendedor = $Telefono;
+    }
+
+    //getters y setters
+    function getAprobacion(){
+        return $this->aprobacion;
+    }
+    function setAprobacion($aprob){
+        $this->aprobacion = $aprob;
     }
 
     //getters y setters

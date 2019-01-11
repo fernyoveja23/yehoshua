@@ -26,6 +26,34 @@ class VendedoresController{
         
     }
 
+    public function saveEvento($nombre, $fechaini, $fechafin, $capacidad, $descripcion, $costo, $idVendedor, $lugar){
+        $sql = "INSERT INTO `evento turistico` (`NombreEvento`, `FechaInicioEvento`, `FechaFinEvento`, `CapacidadEvento`, `DescripcionEvento`, `CostoEvento`, `Vendedor_idVendedor`) 
+        VALUES ('".$nombre."', '".$fechaini."', '".$fechafin."', '".$capacidad."', '".$descripcion."', '".$costo."', '".$idVendedor."')";
+        $idEvento = $this->vendedoresFacade->insert($this->conn, $sql);
+
+        if($idEvento!=0){
+            $sql = "INSERT INTO `lugar` (`DetalleLugar`) VALUES ('".$lugar."')";
+            $idLugar = $this->vendedoresFacade->insert($this->conn, $sql);
+            if($idLugar!=0){
+                $sql = "INSERT INTO `eventolugar` (`evento turistico_idEvento`, `lugar_idLugar`) VALUES ('".$idEvento."', '".$idLugar."')";
+                $eventolugar = $this->vendedoresFacade->insert($this->conn, $sql);
+                if($eventolugar!=0){
+                    $this->conn->commit();
+                    return 1;
+                }else{            
+                    $this->conn->rollback();
+                    return 0;
+                }
+            }else{            
+                $this->conn->rollback();
+                return 0;
+            }
+        }else{            
+            $this->conn->rollback();
+            return 0;
+        }
+    }
+
     /**
      * Funcion para verificar si el usuario a registrado
      * sus datos en la pagina antes.
@@ -40,6 +68,7 @@ class VendedoresController{
             $vendedor->setDireccionVendedor($row["DireccionVendedor"]);
             $vendedor->setEmailVendedor($row["EmailVendedor"]);
             $vendedor->setTelefonoVendedor($row["TelefonoVendedor"]);
+            $vendedor->setAprobacion($row["cataprobacion_idcataprobacion"]);
             $vendedor->setIdUsuario($row["usuarios_idusuarios"]);
             return $vendedor;
         }else{
@@ -49,6 +78,7 @@ class VendedoresController{
             $vendedor->setDireccionVendedor("");
             $vendedor->setEmailVendedor("");
             $vendedor->setTelefonoVendedor("");
+            $vendedor->setAprobacion("");
             $vendedor->setIdUsuario("");
             return $vendedor;
         }
@@ -66,8 +96,20 @@ class VendedoresController{
         }
     }
 
-    public function updateVendedorEstado($idUsuario){
+    public function updateVendedorEstadoAprobado($idUsuario){
         $sql = "UPDATE vendedor SET cataprobacion_idcataprobacion = 'APR' WHERE usuarios_idusuarios = '".$idUsuario."'";
+        $result = $this->vendedoresFacade->update($this->conn,$sql);
+        if($result==0){
+            $this->conn->rollback();
+            return $result;
+        }else{
+            $this->conn->commit();
+            return $result;
+        }
+    }
+    
+    public function updateVendedorEstadoDenegado($idUsuario){
+        $sql = "UPDATE vendedor SET cataprobacion_idcataprobacion = 'DEN' WHERE usuarios_idusuarios = '".$idUsuario."'";
         $result = $this->vendedoresFacade->update($this->conn,$sql);
         if($result==0){
             $this->conn->rollback();

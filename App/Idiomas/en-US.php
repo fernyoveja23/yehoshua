@@ -18,6 +18,7 @@ class idioma{
     public const MENU_REGISTRAR_VENDEDOR = "Complete your registration";
     public const MENU_APROBAR_VENDEDOR = "Approvals";
     public const MENU_ADMINISTRADORES = "Administration";
+    public const MENU_PUBLICAR_EVENTO = "Publish your event";
     public const FOOT_DERECHOS = "© 2018 Copyright:";
     public const FOOT_EMPRESA = "Viajes Yehoshúa";
     public const REGISTRO_NO_ADMIN = "There is no record of an administrator!";
@@ -77,10 +78,14 @@ class idioma{
     public const APROBACIONES_COLUMNA_DIR = "Address";    
     public const APROBACIONES_COLUMNA_EMAIL = "Email";    
     public const APROBACIONES_COLUMNA_TEL = "Phone";    
-    public const APROBACIONES_COLUMNA_APR = "Approve";    
+    public const APROBACIONES_COLUMNA_APR = "Approve";   
+    public const APROBACIONES_COLUMNA_DEN = "Reject";   
     public const APROBACIONES_BOTON_APROB = "Approve seller";  
+    public const APROBACIONES_BOTON_DENEG = "Reject seller"; 
     public const APROBACIONES_EXITO = "<p>The seller was approved successfully!</p>";
-    public const APROBACIONES_FALLO = "<p>There was a problem updating the seller</p>"; 
+    public const APROBACIONES_FALLO = "<p>There was a problem approving the seller</p>"; 
+    public const DENEGACIONES_EXITO = "<p>The seller was successfully rejected</p>";
+    public const DENEGACIONES_FALLO = "<p>There was a problem rejecting the seller</p>";
     public const APROBACIONES_NO_HAY = "<p>There are no new vendors that need your revision</p>";  
 }
 ?>

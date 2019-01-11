@@ -174,7 +174,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `yehoshua`.`lugar`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`lugar` (
-  `idLugar` INT(11) NOT NULL,
+  `idLugar` INT(11) NOT NULL AUTO_INCREMENT,
   `DetalleLugar` VARCHAR(250) NOT NULL,
   PRIMARY KEY (`idLugar`))
 ENGINE = InnoDB
@@ -219,7 +219,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `yehoshua`.`EventoLugar`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`EventoLugar` (
-  `idEventoLugar` INT NOT NULL,
+  `idEventoLugar` INT NOT NULL AUTO_INCREMENT,
   `evento turistico_idEvento` INT(11) NOT NULL,
   `lugar_idLugar` INT(11) NOT NULL,
   PRIMARY KEY (`idEventoLugar`),
