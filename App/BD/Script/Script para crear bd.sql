@@ -2,7 +2,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
 -- Schema yehoshua
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`catcancelacion` (
   `idCatCancelacion` CHAR(3) NOT NULL,
   `DescripcionCatCancelacion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCatCancelacion`),
-  UNIQUE INDEX `idCatCancelacion_UNIQUE` (`idCatCancelacion` ASC))
+  UNIQUE INDEX `idCatCancelacion_UNIQUE` (`idCatCancelacion` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`usuarios` (
   `Username` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(16) NOT NULL,
   PRIMARY KEY (`idusuarios`),
-  UNIQUE INDEX `Username_UNIQUE` (`Username` ASC))
+  UNIQUE INDEX `Username_UNIQUE` (`Username` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`vendedor` (
   `cataprobacion_idcataprobacion` CHAR(3) NOT NULL,
   `usuarios_idusuarios` INT(11) NOT NULL,
   PRIMARY KEY (`idVendedor`),
-  INDEX `fk_vendedor_cataprobacion1_idx` (`cataprobacion_idcataprobacion` ASC),
-  INDEX `fk_vendedor_usuarios1_idx` (`usuarios_idusuarios` ASC),
+  INDEX `fk_vendedor_cataprobacion1_idx` (`cataprobacion_idcataprobacion` ASC) VISIBLE,
+  INDEX `fk_vendedor_usuarios1_idx` (`usuarios_idusuarios` ASC) VISIBLE,
   CONSTRAINT `fk_vendedor_cataprobacion1`
     FOREIGN KEY (`cataprobacion_idcataprobacion`)
     REFERENCES `yehoshua`.`cataprobacion` (`idcataprobacion`)
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`evento turistico` (
   `CostoEvento` DECIMAL(10,2) NOT NULL,
   `Vendedor_idVendedor` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`idEvento`),
-  INDEX `fk_Evento Turistico_Vendedor1_idx` (`Vendedor_idVendedor` ASC),
+  INDEX `fk_Evento Turistico_Vendedor1_idx` (`Vendedor_idVendedor` ASC) VISIBLE,
   CONSTRAINT `fk_Evento Turistico_Vendedor1`
     FOREIGN KEY (`Vendedor_idVendedor`)
     REFERENCES `yehoshua`.`vendedor` (`idVendedor`)
@@ -128,8 +128,8 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
   `idCliente` INT(11) NOT NULL,
   `idVendedor` INT(11) NULL,
   PRIMARY KEY (`idVenta`),
-  INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC),
-  INDEX `idCliente_idx` (`idCliente` ASC),
+  INDEX `fk_Venta_Evento Turistico_idx` (`idEvento` ASC) VISIBLE,
+  INDEX `idCliente_idx` (`idCliente` ASC) VISIBLE,
   CONSTRAINT `idCliente`
     FOREIGN KEY (`idCliente`)
     REFERENCES `yehoshua`.`cliente` (`idCliente`)
@@ -154,8 +154,8 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`cancelaciones` (
   `CatCancelacion_idCatCancelacion` CHAR(3) NOT NULL,
   `venta_idVenta` INT(11) NOT NULL,
   PRIMARY KEY (`idCancelaciones`),
-  INDEX `fk_Cancelaciones_CatCancelacion1_idx` (`CatCancelacion_idCatCancelacion` ASC),
-  INDEX `fk_cancelaciones_venta1_idx` (`venta_idVenta` ASC),
+  INDEX `fk_Cancelaciones_CatCancelacion1_idx` (`CatCancelacion_idCatCancelacion` ASC) VISIBLE,
+  INDEX `fk_cancelaciones_venta1_idx` (`venta_idVenta` ASC) VISIBLE,
   CONSTRAINT `fk_Cancelaciones_CatCancelacion1`
     FOREIGN KEY (`CatCancelacion_idCatCancelacion`)
     REFERENCES `yehoshua`.`catcancelacion` (`idCatCancelacion`)
@@ -199,8 +199,8 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `yehoshua`.`usuariorol` (
   `idUsuario` INT(11) NOT NULL,
   `IdRol` CHAR(3) NOT NULL,
-  INDEX `fk_usuarios_idx` (`idUsuario` ASC),
-  INDEX `fk_rol_idx` (`IdRol` ASC),
+  INDEX `fk_usuarios_idx` (`idUsuario` ASC) VISIBLE,
+  INDEX `fk_rol_idx` (`IdRol` ASC) VISIBLE,
   CONSTRAINT `fk_rol`
     FOREIGN KEY (`IdRol`)
     REFERENCES `yehoshua`.`roles` (`idroles`)
@@ -223,8 +223,8 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`EventoLugar` (
   `evento turistico_idEvento` INT(11) NOT NULL,
   `lugar_idLugar` INT(11) NOT NULL,
   PRIMARY KEY (`idEventoLugar`),
-  INDEX `fk_EventoLugar_evento turistico1_idx` (`evento turistico_idEvento` ASC),
-  INDEX `fk_EventoLugar_lugar1_idx` (`lugar_idLugar` ASC),
+  INDEX `fk_EventoLugar_evento turistico1_idx` (`evento turistico_idEvento` ASC) VISIBLE,
+  INDEX `fk_EventoLugar_lugar1_idx` (`lugar_idLugar` ASC) VISIBLE,
   CONSTRAINT `fk_EventoLugar_evento turistico1`
     FOREIGN KEY (`evento turistico_idEvento`)
     REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
@@ -233,6 +233,42 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`EventoLugar` (
   CONSTRAINT `fk_EventoLugar_lugar1`
     FOREIGN KEY (`lugar_idLugar`)
     REFERENCES `yehoshua`.`lugar` (`idLugar`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `yehoshua`.`Imagen`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `yehoshua`.`Imagen` (
+  `idImagen` INT NOT NULL AUTO_INCREMENT,
+  `NombreArchivo` VARCHAR(255) NOT NULL,
+  `Tipo` VARCHAR(100) NOT NULL,
+  `FechaSubida` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Imagen` MEDIUMBLOB NOT NULL,
+  PRIMARY KEY (`idImagen`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `yehoshua`.`EventoImagen`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `yehoshua`.`EventoImagen` (
+  `idEventoImagen` INT NOT NULL AUTO_INCREMENT,
+  `Imagen_idEventoImagen` INT NOT NULL,
+  `evento turistico_idEvento` INT(11) NOT NULL,
+  PRIMARY KEY (`idEventoImagen`),
+  INDEX `fk_EventoImagen_Imagen1_idx` (`Imagen_idEventoImagen` ASC) VISIBLE,
+  INDEX `fk_EventoImagen_evento turistico1_idx` (`evento turistico_idEvento` ASC) VISIBLE,
+  CONSTRAINT `fk_EventoImagen_Imagen1`
+    FOREIGN KEY (`Imagen_idEventoImagen`)
+    REFERENCES `yehoshua`.`Imagen` (`idImagen`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_EventoImagen_evento turistico1`
+    FOREIGN KEY (`evento turistico_idEvento`)
+    REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

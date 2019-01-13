@@ -19,15 +19,23 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                if($vendedor->getAprobacion()!="APR"){
                    ?>
                 <p>No tienes permiso para poder publicar eventos</p>
+                </div>
+                </div>
                    <?php
                }else{
-                   if(count($_POST)===7){
+                   if(count($_POST)>=7){
                     $conection = new MySQLConexion;
 
                     $conn = $conection->getConexion();
                     $vendedoresController = new VendedoresController($conn);
 
-                    $result = $vendedoresController->saveEvento($_POST["nombre"],$_POST["fechaini"],$_POST["fechafin"],$_POST["capacidad"],$_POST["descripcion"],$_POST["costo"],$vendedor->getIdVendedor(),$_POST["lugar"]);
+                    $imagen = $_FILES['imagen']['tmp_name'];
+                    $imagenContenido = addslashes(file_get_contents($imagen));
+
+                    $result = $vendedoresController->saveEvento($_POST["nombre"]
+                    ,$_POST["fechaini"],$_POST["fechafin"],$_POST["capacidad"]
+                    ,$_POST["descripcion"],$_POST["costo"],$vendedor->getIdVendedor(),$_POST["lugar"]
+                    ,$imagenContenido,$_FILES['imagen']['name'], $_FILES['imagen']['type']);
                     if($result===1){
                         echo "<p>Tu evento ha sido registrado</p>";
                     }else{
@@ -39,7 +47,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                 else{
                     
                ?>
-                <form action="#" method="POST" class="needs-validation" novalidate>
+                <form action="#" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
                     <div class="form-row borderline-form justify-content-center">
                         <div class="form-group col-sm-5">
                             <label class="col-smcol-form-label" for="NombreEvento">Nombre del evento</label>
@@ -68,6 +76,10 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         <div class="form-group col-sm-5">
                             <label class="col-smcol-form-label" for="Lugar">Lugar</label>
                             <input type="text" class="form-control" id="Lugar" name="lugar" placeholder="Lugar a visitar" required>
+                        </div>
+                        <div class="custom-file col-sm-5">
+                            <input type="file" class="custom-file-input" id="Imagen" name="imagen" accept="image/*" required/>
+                            <label class="custom-file-label text-left" for="Imagen">Imagen</label>
                         </div>
                     </div>
                     <input type="reset" class="btn btn-secondary" value="<?php echo idioma::FORMULARIO_VENDEDOR_BOTON_RESET; ?>">
