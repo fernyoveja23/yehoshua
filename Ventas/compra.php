@@ -83,7 +83,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                 {
                     //Guardamos datos del cliente
                     $idCliente = $vendedoresController->saveCliente($_POST["nombre"],
-                    $_POST["apellidop"],$_POST["email"],$_POST["telefono"]);
+                    $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
 
                     require $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/Paypal-Rest/autoload.php';
                     $apiContext = new \PayPal\Rest\ApiContext(
