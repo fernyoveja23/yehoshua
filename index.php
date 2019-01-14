@@ -15,9 +15,12 @@ include 'head.php';
             </div>
         </div>
         <div class="container">
-            <section class="ss-style-bigtriangle">
+            <section class="ss-style-bigtriangle section-sect ">
                 <h1>!Más que un viaje, una aventura!<h1>
-				<h2>¿Quienes somos?</h2>
+                    <br>
+                <h2>¿Quienes somos?</h2>
+                <br>
+                <br>
 				<p class="section-p">
                 Somos la Agencia de Viajes que te llevara a vivir grandes AVENTURAS.
                 </p>
@@ -28,9 +31,11 @@ include 'head.php';
             <svg id="bigTriangleColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 102" preserveAspectRatio="none">
 				<path d="M0 0 L50 100 L100 0 Z" />
             </svg>
+            <section>
             <?php
             include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/Administracion/Evento.php';
             ?>
+            </section>
         </div>
             <?php
     include 'foot.php';

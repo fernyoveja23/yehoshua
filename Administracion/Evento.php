@@ -9,7 +9,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
 
             
             ?>
-        <div class="hero-div mt-5">
+        <div class="hero-div">
             <div class="container mt-3">
             <div class="row justify-content-center">
             <?php
