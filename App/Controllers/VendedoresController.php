@@ -45,6 +45,23 @@ class VendedoresController
 
     }
 
+    public function registroVenta($numviajeros, $total, $idevento, $idcliente, $idvendedor)
+    {
+        $sql = "INSERT INTO `venta` (`FechaVenta`, `NoViajerosVenta`, `Total`, `idEvento`, `idCliente`, `idVendedor`) 
+        VALUES ('" . date('Y-m-d') . "', '" . $numviajeros . "', '" . $total . "', '" . $idevento . "','" . $idcliente . "','" . $idvendedor . "')";
+
+        $result = $this->vendedoresFacade->insert($this->conn, $sql);
+
+        if ($result != 0) {
+            $this->conn->commit();
+            return $result;
+        } else {
+            $this->conn->rollback();
+            return $result;
+        }
+
+    }
+
     public function saveEvento($nombre, $fechaini, $fechafin, $capacidad, $descripcion, $costo, $idVendedor, $lugar, $imagenContenido, $nombreImagen, $tipo)
     {
         $sql = "INSERT INTO `eventoturistico` (`NombreEvento`, `FechaInicioEvento`, `FechaFinEvento`, `CapacidadEvento`, `DescripcionEvento`, `CostoEvento`, `Vendedor_idVendedor`) 
@@ -115,7 +132,7 @@ class VendedoresController
     public function getEvento($idEvento){
         $sql = "SELECT `eventoturistico`.`idEvento`, `eventoturistico`.`NombreEvento`, `eventoturistico`.`FechaInicioEvento`, 
         `eventoturistico`.`FechaFinEvento`, `eventoturistico`.`CapacidadEvento`, `eventoturistico`.`DescripcionEvento`,
-        `eventoturistico`.`CostoEvento`, `vendedor`.`NombreVendedor`, `vendedor`.`EmailVendedor`, `vendedor`.`TelefonoVendedor`,
+        `eventoturistico`.`CostoEvento`,`vendedor`.`idVendedor`, `vendedor`.`NombreVendedor`, `vendedor`.`EmailVendedor`, `vendedor`.`TelefonoVendedor`,
         `lugar`.`DetalleLugar`,
         `imagen`.`NombreArchivo`, `imagen`.`Tipo`, `imagen`.`Imagen`
         FROM `eventoturistico` 

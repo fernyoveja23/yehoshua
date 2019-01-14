@@ -9,13 +9,33 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
         
     <?php
     include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
+    include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
+            include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresController.php';
+            $conection = new MySQLConexion;
+
+            $conn = $conection->getConexion();
+
+            $vendedoresController = new VendedoresController($conn);
+            $idVenta = $vendedoresController->registroVenta($_SESSION["ventaviajeros"], $_SESSION["ventatotal"],
+            $_SESSION["ventaidEvento"], $_SESSION["ventaidCliente"], $_SESSION["ventaidVendedor"])
+            if($idVenta!=0)
+            {
     ?>
         <div class="hero-image mt-5">
             <div class="hero-text background-evento">
-                <p>La venta ha sido aprobada</p>
+                <p>La venta ha sido aprobada, numero de referencia <?php echo $idVenta; ?></p>
             </div>
         </div>
     <?php
+            }else{
+                ?>
+                <div class="hero-image mt-5">
+                    <div class="hero-text background-evento">
+                        <p>Hubo un problema al registrar la venta</p>
+                    </div>
+                </div>
+            <?php
+            }
     
     include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/foot.php';
     ?>

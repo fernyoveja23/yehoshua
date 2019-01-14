@@ -97,8 +97,14 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                     $payer->setPaymentMethod('paypal');
 
                     $amount = new \PayPal\Api\Amount();
-                    $amount->setTotal('1.00');
-                    $amount->setCurrency('USD');
+                    $total = $row["CostoEvento"]*$_POST["lugares"];
+                    $_SESSION["ventatotal"] = $total;
+                    $_SESSION["ventaviajeros"] = $_POST["lugares"];
+                    $_SESSION["ventaidEvento"] = $_GET["lugares"];
+                    $_SESSION["ventaidCliente"] = $idCliente;
+                    $_SESSION["ventaidVendedor"] = $row["idVendedor"];
+                    $amount->setTotal('".$total."');
+                    $amount->setCurrency('MXN');
 
                     $transaction = new \PayPal\Api\Transaction();
                     $transaction->setAmount($amount);
@@ -119,9 +125,10 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         ?>
                         <div class="background-evento col col-sm-4 col-lg-5 mt-3 ml-4 mb-5">
                         <?php
-                        echo $payment;
+                        // echo $payment;
 
-                        echo "\n\nRedirect user to approval_url: " . $payment->getApprovalLink() . "\n";
+                        // echo "\n\nRedirect user to approval_url: " . $payment->getApprovalLink() . "\n";
+                        echo "<label>Autoriza tu pago con paypal y tendrás tus boletos</label>";
                         echo "\n\n<a class='btn btn-primary' href='" . $payment->getApprovalLink() . "'>Compra con paypal</a>\n";
                         ?>
                         </div>
