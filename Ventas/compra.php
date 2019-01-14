@@ -81,6 +81,10 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                 <?php
                 if(COUNT($_POST)===6)
                 {
+                    //Guardamos datos del cliente
+                    $idCliente = $vendedoresController->saveCliente($_POST["nombre"],
+                    $_POST["apellidop"],$_POST["email"],$_POST["telefono"]);
+
                     require $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/Paypal-Rest/autoload.php';
                     $apiContext = new \PayPal\Rest\ApiContext(
                         new \PayPal\Auth\OAuthTokenCredential(
@@ -100,8 +104,8 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                     $transaction->setAmount($amount);
 
                     $redirectUrls = new \PayPal\Api\RedirectUrls();
-                    $redirectUrls->setReturnUrl("https://example.com/your_redirect_url.html")
-                        ->setCancelUrl("https://example.com/your_cancel_url.html");
+                    $redirectUrls->setReturnUrl("http://localhost/yehoshua/Ventas/ventaaprobada.php")
+                        ->setCancelUrl("http://localhost/yehoshua/Ventas/ventacancelada.php");
 
                     $payment = new \PayPal\Api\Payment();
                     $payment->setIntent('sale')
@@ -112,9 +116,16 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         // After Step 3
                     try {
                         $payment->create($apiContext);
+                        ?>
+                        <div class="background-evento col col-sm-4 col-lg-5 mt-3 ml-4 mb-5">
+                        <?php
                         echo $payment;
 
                         echo "\n\nRedirect user to approval_url: " . $payment->getApprovalLink() . "\n";
+                        echo "\n\n<a class='btn btn-primary' href='" . $payment->getApprovalLink() . "'>Compra con paypal</a>\n";
+                        ?>
+                        </div>
+                        <?php
                     }
                     catch (\PayPal\Exception\PayPalConnectionException $ex) {
                         // This will print the detailed information on the exception.

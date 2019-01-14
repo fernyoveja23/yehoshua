@@ -29,6 +29,22 @@ class VendedoresController
 
     }
 
+    public function saveCliente($nombre, $apellidop, $apellidom, $email, $telefono)
+    {
+        $sql = "INSERT INTO `cliente` (`NombreCliente`, `ApellidoPCliente`, `ApellidoMCliente`, `EmailCliente`, `CelularCliente`) VALUES ('" . $nombre . "', '" . $apellidop . "', '" . $apellidom . "', '" . $email . "','" . $telefono . "')";
+
+        $result = $this->vendedoresFacade->insert($this->conn, $sql);
+
+        if ($result != 0) {
+            $this->conn->commit();
+            return $result;
+        } else {
+            $this->conn->rollback();
+            return $result;
+        }
+
+    }
+
     public function saveEvento($nombre, $fechaini, $fechafin, $capacidad, $descripcion, $costo, $idVendedor, $lugar, $imagenContenido, $nombreImagen, $tipo)
     {
         $sql = "INSERT INTO `eventoturistico` (`NombreEvento`, `FechaInicioEvento`, `FechaFinEvento`, `CapacidadEvento`, `DescripcionEvento`, `CostoEvento`, `Vendedor_idVendedor`) 
