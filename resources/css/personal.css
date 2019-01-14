@@ -139,7 +139,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 0.3rem;
-  background-color: #343A40;
+  background-color: rgb(83, 83, 83);
   color: white;
   text-align: center;
 }

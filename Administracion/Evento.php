@@ -41,13 +41,14 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
                         <label class="col-sm-auto col-lg-auto"s><?php echo $row["TelefonoVendedor"]; ?></label>
                     </div>          
                     <div class="row justify-content-center">
-                        <a class="btn btn-success">Ver detalles</a>
+                        <a class="btn btn-success" href="/yehoshua/Ventas/compra.php?lugares=<?php echo $row["idEvento"]; ?>">Ver detalles</a>
                     </div>          
                 </div>
                 <?php
                 }
             }
             else{
+                echo "<br><br><br><br>";
                 echo "<div class='background-evento col col-sm-4 col-lg-5 mt-3 ml-4 mb-5'>";
                 echo "<div class='row justify-content-center'>";
                 echo "<p>No existen eventos proximamente<p>";
