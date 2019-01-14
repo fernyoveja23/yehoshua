@@ -9,8 +9,8 @@
                         <a class="nav-link" href="/yehoshua/index.php"><?php echo idioma::MENU_INICIO; ?></a>
                     </li>
                     <li class="navbar-item">
-                        <a class="nav-link" href="#"><?php echo idioma::MENU_EVENTOS; ?></a>
-                    </li>
+                        <a class="nav-link" href="/yehoshua/Ventas/evento.php"><?php echo idioma::MENU_EVENTOS; ?></a>
+                    </li>                    
                     <?php
                 if (isset($_SESSION["usuario"]) && isset($_SESSION["rol"])) {
                     /**

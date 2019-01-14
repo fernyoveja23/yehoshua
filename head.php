@@ -12,6 +12,7 @@
     
     <link rel="stylesheet" href="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/bootstrap-4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/css/personal.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/css/component.css" />
     
     <script src="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/bootstrap-4.1.3/js/jquery-3.3.1.slim.min.js"></script>
     <script src="<?php echo "http://".$_SERVER["SERVER_NAME"]."/yehoshua/" ?>resources/bootstrap-4.1.3/js/popper.min.js"></script>

@@ -55,11 +55,11 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                         </div>
                         <div class="form-group col-sm-5">
                             <label class="col-smcol-form-label" for="FechaIni">Fecha de inicio</label>
-                            <input type="date" class="form-control" id="FechaIni" name="fechaini" required>
+                            <input type="date" class="form-control" min=<?php echo date('Y-m-d');?> id="FechaIni" name="fechaini" required>
                         </div>
                         <div class="form-group col-sm-5">
                             <label class="col-smcol-form-label" for="FechaFin">Fecha Termino</label>
-                            <input type="date" class="form-control" id="FechaFin" name="fechafin" required>
+                            <input type="date" class="form-control" min=<?php echo date('Y-m-d');?> id="FechaFin" name="fechafin" required>
                         </div>
                         <div class="form-group col-sm-5">
                             <label class="col-smcol-form-label" for="Capacidad">Capacidad</label>

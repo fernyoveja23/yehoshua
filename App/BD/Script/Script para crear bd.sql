@@ -94,9 +94,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `yehoshua`.`evento turistico`
+-- Table `yehoshua`.`eventoturistico`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `yehoshua`.`evento turistico` (
+CREATE TABLE IF NOT EXISTS `yehoshua`.`eventoturistico` (
   `idEvento` INT(11) NOT NULL AUTO_INCREMENT,
   `NombreEvento` VARCHAR(45) NOT NULL,
   `FechaInicioEvento` DATETIME NOT NULL,
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `yehoshua`.`venta` (
     ON UPDATE NO ACTION,
   CONSTRAINT `idEvento`
     FOREIGN KEY (`idEvento`)
-    REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
+    REFERENCES `yehoshua`.`eventoturistico` (`idEvento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -220,14 +220,14 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `yehoshua`.`EventoLugar` (
   `idEventoLugar` INT NOT NULL AUTO_INCREMENT,
-  `evento turistico_idEvento` INT(11) NOT NULL,
+  `eventoturistico_idEvento` INT(11) NOT NULL,
   `lugar_idLugar` INT(11) NOT NULL,
   PRIMARY KEY (`idEventoLugar`),
-  INDEX `fk_EventoLugar_evento turistico1_idx` (`evento turistico_idEvento` ASC) VISIBLE,
+  INDEX `fk_EventoLugar_evento turistico1_idx` (`eventoturistico_idEvento` ASC) VISIBLE,
   INDEX `fk_EventoLugar_lugar1_idx` (`lugar_idLugar` ASC) VISIBLE,
   CONSTRAINT `fk_EventoLugar_evento turistico1`
-    FOREIGN KEY (`evento turistico_idEvento`)
-    REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
+    FOREIGN KEY (`eventoturistico_idEvento`)
+    REFERENCES `yehoshua`.`eventoturistico` (`idEvento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_EventoLugar_lugar1`
@@ -257,18 +257,18 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `yehoshua`.`EventoImagen` (
   `idEventoImagen` INT NOT NULL AUTO_INCREMENT,
   `Imagen_idEventoImagen` INT NOT NULL,
-  `evento turistico_idEvento` INT(11) NOT NULL,
+  `eventoturistico_idEvento` INT(11) NOT NULL,
   PRIMARY KEY (`idEventoImagen`),
   INDEX `fk_EventoImagen_Imagen1_idx` (`Imagen_idEventoImagen` ASC) VISIBLE,
-  INDEX `fk_EventoImagen_evento turistico1_idx` (`evento turistico_idEvento` ASC) VISIBLE,
+  INDEX `fk_EventoImagen_evento turistico1_idx` (`eventoturistico_idEvento` ASC) VISIBLE,
   CONSTRAINT `fk_EventoImagen_Imagen1`
     FOREIGN KEY (`Imagen_idEventoImagen`)
     REFERENCES `yehoshua`.`Imagen` (`idImagen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_EventoImagen_evento turistico1`
-    FOREIGN KEY (`evento turistico_idEvento`)
-    REFERENCES `yehoshua`.`evento turistico` (`idEvento`)
+    FOREIGN KEY (`eventoturistico_idEvento`)
+    REFERENCES `yehoshua`.`eventoturistico` (`idEvento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -44,7 +44,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
             if($result!=NULL){
             ?>
             <div class="table-responsive-lg">
-                <table class="table table-hover table-striped table-dark">
+                <table class="table table-hover table-striped table-dark table-responsive">
                     <thead>
                         <tr>
                         <th scope="col"><?php echo idioma::APROBACIONES_COLUMNA_NOMBRE; ?></th>
