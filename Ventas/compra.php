@@ -98,12 +98,12 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
 
                     $amount = new \PayPal\Api\Amount();
                     $total = $row["CostoEvento"]*$_POST["lugares"];
-                    $_SESSION["ventatotal"] = $total;
-                    $_SESSION["ventaviajeros"] = $_POST["lugares"];
-                    $_SESSION["ventaidEvento"] = $_GET["lugares"];
-                    $_SESSION["ventaidCliente"] = $idCliente;
-                    $_SESSION["ventaidVendedor"] = $row["idVendedor"];
-                    $amount->setTotal('".$total."');
+                    setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
+                    setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
+                    setcookie("ventaidEvento", $_GET["lugares"], time()+(60*10));
+                    setcookie("ventaidCliente", $idCliente, time()+(60*10));
+                    setcookie("ventaidVendedor", $row["idVendedor"], time()+(60*10));
+                    $amount->setTotal(number_format($total, 2, '.', ''));
                     $amount->setCurrency('MXN');
 
                     $transaction = new \PayPal\Api\Transaction();

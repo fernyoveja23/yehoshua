@@ -16,8 +16,8 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
             $conn = $conection->getConexion();
 
             $vendedoresController = new VendedoresController($conn);
-            $idVenta = $vendedoresController->registroVenta($_SESSION["ventaviajeros"], $_SESSION["ventatotal"],
-            $_SESSION["ventaidEvento"], $_SESSION["ventaidCliente"], $_SESSION["ventaidVendedor"])
+            $idVenta = $vendedoresController->registroVenta($_COOKIE["ventaviajeros"], $_COOKIE["ventatotal"],
+            $_COOKIE["ventaidEvento"], $_COOKIE["ventaidCliente"], $_COOKIE["ventaidVendedor"]);
             if($idVenta!=0)
             {
     ?>
