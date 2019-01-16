@@ -1,21 +1,41 @@
+<?php
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/lang.php';
+
+$result = $vendedoresController->getEvento($_GET["lugares"]);
+                while($row = $result->fetch_assoc()) {
+                $tipo = ($row["Tipo"]==="") ? "image/png" : $row["Tipo"];
+                $fechaini = date_create($row["FechaInicioEvento"]);
+                $fechafin = date_create($row["FechaFinEvento"]);
+
+                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
+                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
+                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresController.php';
+                $conection = new MySQLConexion;
+    
+                $conn = $conection->getConexion();
+    
+                $vendedoresController = new VendedoresController($conn);
+
+                $total = $row["CostoEvento"]*$_POST["lugares"];
+                    setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
+                    setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
+                    setcookie("ventaidEvento", $_GET["lugares"], time()+(60*10));
+                    setcookie("ventaidCliente", $idCliente, time()+(60*10));
+                    setcookie("ventaidVendedor", $row["idVendedor"], time()+(60*10));
+
+?>
+
 <!DOCTYPE html>
 <html>
 <?php
-include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/lang.php';
+
 include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
 ?>
     <body>        
 
         
             <?php
-            include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
-            include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
-            include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresController.php';
-            $conection = new MySQLConexion;
-
-            $conn = $conection->getConexion();
-
-            $vendedoresController = new VendedoresController($conn);
+           
 
             
             ?>
@@ -25,11 +45,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
             <?php
             
             if(isset($_GET["lugares"])){
-                $result = $vendedoresController->getEvento($_GET["lugares"]);
-                while($row = $result->fetch_assoc()) {
-                $tipo = ($row["Tipo"]==="") ? "image/png" : $row["Tipo"];
-                $fechaini = date_create($row["FechaInicioEvento"]);
-                $fechafin = date_create($row["FechaFinEvento"]);
+                
             ?>
                 <div class="background-evento col col-sm-4 col-lg-5 mt-3 ml-4 mb-5">
                     <img class="img-fluid" src="data:<?php echo $tipo;?>;base64,<?php echo base64_encode($row["Imagen"]); ?> " />
@@ -97,12 +113,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                     $payer->setPaymentMethod('paypal');
 
                     $amount = new \PayPal\Api\Amount();
-                    $total = $row["CostoEvento"]*$_POST["lugares"];
-                    setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
-                    setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
-                    setcookie("ventaidEvento", $_GET["lugares"], time()+(60*10));
-                    setcookie("ventaidCliente", $idCliente, time()+(60*10));
-                    setcookie("ventaidVendedor", $row["idVendedor"], time()+(60*10));
+                    
                     $amount->setTotal(number_format($total, 2, '.', ''));
                     $amount->setCurrency('MXN');
 
