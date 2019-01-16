@@ -49,7 +49,7 @@ class VendedoresController
     {
         $sql = "INSERT INTO `venta` (`FechaVenta`, `NoViajerosVenta`, `Total`, `idEvento`, `idCliente`, `idVendedor`) 
         VALUES ('" . date('Y-m-d') . "', '" . $numviajeros . "', '" . $total . "', '" . $idevento . "','" . $idcliente . "','" . $idvendedor . "')";
-
+        echo $sql;
         $result = $this->vendedoresFacade->insert($this->conn, $sql);
 
         if ($result != 0) {
