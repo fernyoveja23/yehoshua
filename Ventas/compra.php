@@ -1,5 +1,12 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/lang.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
+include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresController.php';
+$conection = new MySQLConexion;
+    
+$conn = $conection->getConexion();
+
+$vendedoresController = new VendedoresController($conn);
 
 $result = $vendedoresController->getEvento($_GET["lugares"]);
                 $row = $result->fetch_assoc();
@@ -7,21 +14,20 @@ $result = $vendedoresController->getEvento($_GET["lugares"]);
                 $fechaini = date_create($row["FechaInicioEvento"]);
                 $fechafin = date_create($row["FechaFinEvento"]);
 
-                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
-                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/BD/Conexion.php';
-                include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/App/Controllers/VendedoresController.php';
-                $conection = new MySQLConexion;
-    
-                $conn = $conection->getConexion();
-    
-                $vendedoresController = new VendedoresController($conn);
-
+                
+                
+               
+                if(COUNT($_POST)===6)
+                {
+                    $idCliente = $vendedoresController->saveCliente($_POST["nombre"],
+                    $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
                 $total = $row["CostoEvento"]*$_POST["lugares"];
                     setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
                     setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
                     setcookie("ventaidEvento", $_GET["lugares"], time()+(60*10));
                     setcookie("ventaidCliente", $idCliente, time()+(60*10));
                     setcookie("ventaidVendedor", $row["idVendedor"], time()+(60*10));
+                }
 
 ?>
 
@@ -36,7 +42,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
         
             <?php
            
-
+           include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/menu.php';
             
             ?>
         <div class="hero-div mt-5">
@@ -98,8 +104,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                 if(COUNT($_POST)===6)
                 {
                     //Guardamos datos del cliente
-                    $idCliente = $vendedoresController->saveCliente($_POST["nombre"],
-                    $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
+                    
 
                     require $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/Paypal-Rest/autoload.php';
                     $apiContext = new \PayPal\Rest\ApiContext(
