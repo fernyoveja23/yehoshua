@@ -2,7 +2,7 @@
 include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/lang.php';
 
 $result = $vendedoresController->getEvento($_GET["lugares"]);
-                $row = $result->fetch_assoc());
+                $row = $result->fetch_assoc();
                 $tipo = ($row["Tipo"]==="") ? "image/png" : $row["Tipo"];
                 $fechaini = date_create($row["FechaInicioEvento"]);
                 $fechafin = date_create($row["FechaFinEvento"]);
