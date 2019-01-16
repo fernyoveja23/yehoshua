@@ -20,13 +20,16 @@ $result = $vendedoresController->getEvento($_GET["lugares"]);
                 if(COUNT($_POST)===6)
                 {
                     $idCliente = $vendedoresController->saveCliente($_POST["nombre"],
-                    $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
-                $total = $row["CostoEvento"]*$_POST["lugares"];
-                    setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
-                    setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
-                    setcookie("ventaidEvento", $_GET["lugares"], time()+(60*10));
-                    setcookie("ventaidCliente", $idCliente, time()+(60*10));
-                    setcookie("ventaidVendedor", $row["idVendedor"], time()+(60*10));
+                    if($idCliente !=0)
+                    {
+                        $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
+                        $total = $row["CostoEvento"]*$_POST["lugares"];
+                        setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
+                        setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
+                        setcookie("ventaidEvento", $_GET["lugares"], time()+(60*10));
+                        setcookie("ventaidCliente", $idCliente, time()+(60*10));
+                        setcookie("ventaidVendedor", $row["idVendedor"], time()+(60*10));
+                    }
                 }
 
 ?>
@@ -105,50 +108,52 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                 {
                     //Guardamos datos del cliente
                     
+                    if($idCliente!=0)
+                    {
+                        require $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/Paypal-Rest/autoload.php';
+                        $apiContext = new \PayPal\Rest\ApiContext(
+                            new \PayPal\Auth\OAuthTokenCredential(
+                                'AZsatlhjKYX2zaXrbvMWsV63_5NCV5Sp5dXxQNC3FQM-FXYI7ZKNVFyIHFN52XGPGAYANjCOhLqSzpOt',     // ClientID
+                                'EOaWaAFJhem9tzqBMaIcsO0DmHWUqaEhyfZL38HVYGww9392WsXgOd0R_MRUVPBEKQhFuk6nKYgnqfWT'      // ClientSecret
+                                )
+                        );
+                        // After Step 2
+                        $payer = new \PayPal\Api\Payer();
+                        $payer->setPaymentMethod('paypal');
 
-                    require $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/Paypal-Rest/autoload.php';
-                    $apiContext = new \PayPal\Rest\ApiContext(
-                        new \PayPal\Auth\OAuthTokenCredential(
-                            'AZsatlhjKYX2zaXrbvMWsV63_5NCV5Sp5dXxQNC3FQM-FXYI7ZKNVFyIHFN52XGPGAYANjCOhLqSzpOt',     // ClientID
-                            'EOaWaAFJhem9tzqBMaIcsO0DmHWUqaEhyfZL38HVYGww9392WsXgOd0R_MRUVPBEKQhFuk6nKYgnqfWT'      // ClientSecret
-                            )
-                    );
-                    // After Step 2
-                    $payer = new \PayPal\Api\Payer();
-                    $payer->setPaymentMethod('paypal');
+                        $amount = new \PayPal\Api\Amount();
+                        
+                        $amount->setTotal(number_format($total, 2, '.', ''));
+                        $amount->setCurrency('MXN');
 
-                    $amount = new \PayPal\Api\Amount();
-                    
-                    $amount->setTotal(number_format($total, 2, '.', ''));
-                    $amount->setCurrency('MXN');
+                        $transaction = new \PayPal\Api\Transaction();
+                        $transaction->setAmount($amount);
 
-                    $transaction = new \PayPal\Api\Transaction();
-                    $transaction->setAmount($amount);
+                        $redirectUrls = new \PayPal\Api\RedirectUrls();
+                        $redirectUrls->setReturnUrl("http://localhost/yehoshua/Ventas/ventaaprobada.php")
+                            ->setCancelUrl("http://localhost/yehoshua/Ventas/ventacancelada.php");
 
-                    $redirectUrls = new \PayPal\Api\RedirectUrls();
-                    $redirectUrls->setReturnUrl("http://localhost/yehoshua/Ventas/ventaaprobada.php")
-                        ->setCancelUrl("http://localhost/yehoshua/Ventas/ventacancelada.php");
+                        $payment = new \PayPal\Api\Payment();
+                        $payment->setIntent('sale')
+                            ->setPayer($payer)
+                            ->setTransactions(array($transaction))
+                            ->setRedirectUrls($redirectUrls);
 
-                    $payment = new \PayPal\Api\Payment();
-                    $payment->setIntent('sale')
-                        ->setPayer($payer)
-                        ->setTransactions(array($transaction))
-                        ->setRedirectUrls($redirectUrls);
+                            // After Step 3
+                        try {
+                            $payment->create($apiContext);
+                            ?>
+                            <div class="background-evento col col-sm-4 col-lg-5 mt-3 ml-4 mb-5">
+                            <?php
+                            // echo $payment;
 
-                        // After Step 3
-                    try {
-                        $payment->create($apiContext);
-                        ?>
-                        <div class="background-evento col col-sm-4 col-lg-5 mt-3 ml-4 mb-5">
-                        <?php
-                        // echo $payment;
-
-                        // echo "\n\nRedirect user to approval_url: " . $payment->getApprovalLink() . "\n";
-                        echo "<label>Autoriza tu pago con paypal y tendrás tus boletos</label>";
-                        echo "\n\n<a class='btn btn-primary' href='" . $payment->getApprovalLink() . "'>Compra con paypal</a>\n";
-                        ?>
-                        </div>
-                        <?php
+                            // echo "\n\nRedirect user to approval_url: " . $payment->getApprovalLink() . "\n";
+                            echo "<label>Autoriza tu pago con paypal y tendrás tus boletos</label>";
+                            echo "\n\n<a class='btn btn-primary' href='" . $payment->getApprovalLink() . "'>Compra con paypal</a>\n";
+                            ?>
+                            </div>
+                            <?php
+                        }
                     }
                     catch (\PayPal\Exception\PayPalConnectionException $ex) {
                         // This will print the detailed information on the exception.
