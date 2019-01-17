@@ -20,9 +20,10 @@ $result = $vendedoresController->getEvento($_GET["lugares"]);
                 if(COUNT($_POST)===6)
                 {
                     $idCliente = $vendedoresController->saveCliente($_POST["nombre"],
+                    $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
                     if($idCliente !=0)
                     {
-                        $_POST["apellidop"],$_POST["apellidom"],$_POST["email"],$_POST["telefono"]);
+                       
                         $total = $row["CostoEvento"]*$_POST["lugares"];
                         setcookie("ventatotal", $total, time()+(60*10));//expira en 10 minutos 
                         setcookie("ventaviajeros", $_POST["lugares"], time()+(60*10));
@@ -154,12 +155,13 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
                             </div>
                             <?php
                         }
+                        catch (\PayPal\Exception\PayPalConnectionException $ex) {
+                            // This will print the detailed information on the exception.
+                            //REALLY HELPFUL FOR DEBUGGING
+                            echo $ex->getData();
+                        }
                     }
-                    catch (\PayPal\Exception\PayPalConnectionException $ex) {
-                        // This will print the detailed information on the exception.
-                        //REALLY HELPFUL FOR DEBUGGING
-                        echo $ex->getData();
-}
+                    
                     ?>
 
                     <?php
