@@ -48,7 +48,7 @@ class VendedoresController
     public function registroVenta($numviajeros, $total, $idevento, $idcliente, $idvendedor)
     {
         $sql = "INSERT INTO `venta` (`FechaVenta`, `NoViajerosVenta`, `Total`, `idEvento`, `idCliente`, `idVendedor`) 
-        VALUES ('" . date('Y-m-d') . "', '" . $numviajeros . "', '" . $total . "', '" . $idevento . "','" . $idcliente . "','" . $idvendedor . "')";
+        VALUES ('" . date('Y-m-d H:i:s') . "', '" . $numviajeros . "', '" . $total . "', '" . $idevento . "','" . $idcliente . "','" . $idvendedor . "')";
         echo $sql;
         $result = $this->vendedoresFacade->insert($this->conn, $sql);
 
