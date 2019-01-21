@@ -24,6 +24,7 @@ include $_SERVER["DOCUMENT_ROOT"] . '/yehoshua/head.php';
         <div class="hero-image mt-5">
             <div class="hero-text background-evento">
                 <p>La venta ha sido aprobada, numero de referencia <?php echo $idVenta; ?></p>
+                <a class="btn btn-primary" target="_blank" href="/yehoshua/Ventas/impresion.php?ref=<?php echo $idVenta; ?>" >Imprimir PDF</a>
             </div>
         </div>
     <?php
