@@ -162,7 +162,7 @@ class VendedoresController
         `lugar`.`DetalleLugar`,
         `imagen`.`NombreArchivo`, `imagen`.`Tipo`, `imagen`.`Imagen`
         FROM `venta` 
-        INNER JOIN `eventoturistico` ON `eventoturistico`. = `venta`.`idEvento`
+        INNER JOIN `eventoturistico` ON `eventoturistico`.`idEvento` = `venta`.`idEvento`
         INNER JOIN `vendedor` ON `vendedor`.`idVendedor` = `venta`.`idVendedor`
         INNER JOIN `lugar` ON `lugar`.`idLugar` = (SELECT `eventolugar`.`lugar_idLugar` FROM `eventolugar` 
         WHERE `eventolugar`.`eventoturistico_idEvento` = `eventoturistico`.`idEvento`)
